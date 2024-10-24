@@ -1,4 +1,62 @@
-@import './reset.css';
-@import './links.css';
-@import './code.css';
-@import './page-transition-loading-animation.css';
+@import url("page-transition-loading-animation.css");
+@import url("skeleton.css");
+@import url("normalize.css");
+nav {
+  border-bottom: #222 solid 1px;
+}
+
+.align-left {
+  justify-content: end !important;
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+  margin-bottom: 0;
+}
+.navbar-list .navbar-item {
+  position: relative;
+  margin-bottom: 0;
+}
+.navbar-list .navbar-item .navbar-link {
+  padding: 14.5px 20px 14.5px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  line-height: 40px;
+  text-decoration: none;
+  color: #222;
+}
+.navbar-list .navbar-item .navbar-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+  clip-path: polygon(0 0, 100% 0, 100% 5%, 0 5%, 0 95%, 100% 95%, 100% 100%, 0 100%);
+  transform: scaleX(0);
+  transform-origin: bottom center;
+  transition: transform 0.3s ease;
+}
+.navbar-list .navbar-item .navbar-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
+.navbar-list .navbar-item .navbar-link.active {
+  color: #33c3f0;
+}
+.navbar-list .fill {
+  background: #222;
+}
+.navbar-list .fill a {
+  color: #33c3f0 !important;
+}
+.navbar-list .fill a::after {
+  background-color: #33c3f0 !important;
+}
+
+/*# sourceMappingURL=index.css.map */
