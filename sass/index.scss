@@ -3,72 +3,427 @@
 @import url("normalize.css");
 
 $color1: #222;
-$color2: #33c3f0;
+$color2: #5075db;
+$color3: #879fd3;
+$color4: #ccc;
+$color5: #3067ff;
+
+// HEADER
 
 nav {
-  border-bottom: $color1 solid 1px;
+  display: none;
+}
+
+header {
+  width: 100%;
+  height: 800px;
+  background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+      to right,
+      hsla(217, 89%, 61%, 0.678),
+      hsla(222, 11%, 24%, 0.637)
+    ),
+    url(../img/image2.jpg);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+      to right,
+      hsla(217, 89%, 61%, 0.678),
+      hsla(222, 11%, 24%, 0.637)
+    ),
+    url(../img/image2.jpg);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+
+  .textos-header {
+    display: flex;
+    height: 650px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    h1 {
+      font-size: 50px;
+      color: #fff;
+    }
+    h2 {
+      font-size: 30px;
+      font-weight: 300;
+      color: #fff;
+    }
+  }
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 }
 
 .align-left {
   justify-content: end !important;
 }
 
-.navbar-list {
+.navbar-container {
   display: flex;
-  list-style: none;
-  margin-bottom: 0;
-  .navbar-item {
-    position: relative;
-    margin-bottom: 0;
-    .navbar-link {
-      padding: 14.5px 20px 14.5px 20px;
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2rem;
-      line-height: 40px;
-      text-decoration: none;
-      color: $color1;
-    }
-    .navbar-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $color1;
-      clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 5%,
-        0 5%,
-        0 95%,
-        100% 95%,
-        100% 100%,
-        0 100%
-      );
-      transform: scaleX(0);
-      transform-origin: bottom center;
-      transition: transform 0.3s ease;
-    }
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    .navbar-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: bottom center;
+// MAIN
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin-bottom: 50px;
+}
+
+.titulo {
+  color: $color5;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sobre-nosotros {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  .container-sobre-nosotros {
+    display: flex;
+    justify-content: space-evenly;
+    .imagen-about-us {
+      display: none;
     }
-    .navbar-link.active {
-      color: $color2;
+    .contenido-textos {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 90%;
+      h3 {
+        font-size: 23.5px;
+        margin-bottom: 15px;
+        span {
+          background: $color2;
+          color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          text-align: center;
+          width: 30px;
+          height: 30px;
+          padding: 3px;
+          box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+          margin-right: 5px;
+        }
+      }
+      p {
+        padding: 0px 0px 30px 15px;
+        font-weight: 300;
+        text-align: justify;
+      }
     }
   }
-  .fill {
-    background: $color1;
-    a {
-      color: $color2 !important;
+}
+
+.clientes {
+  display: flex;
+  flex-direction: column;
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+    .card {
+      background: linear-gradient(to left, $color2, $color5);
+      display: flex;
+      width: 80%;
+      height: 200px;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 5px;
+      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        display: block;
+      }
+      .contenido-texto-card {
+        width: 60%;
+        color: #fff;
+        p {
+          font-weight: 300;
+          padding-top: 5px;
+        }
+      }
     }
-    a::after {
-      background-color: $color2 !important;
+  }
+}
+
+.about-services {
+  width: 100%;
+  background-color: $color5;
+  margin: 0 !important;
+  padding: 0 !important;
+  .titulo {
+    margin-bottom: 20px;
+    color: white;
+  }
+  .servicio-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .servicio-ind {
+      width: 80%;
+      text-align: center;
+      color: white;
+      img {
+        width: 90%;
+        height: 200px;
+      }
+      h3 {
+        margin: 10px 0;
+      }
+      p {
+        font-weight: 300;
+        text-align: justify;
+      }
+    }
+  }
+}
+
+// FOOTER
+
+footer {
+  background: $color1;
+  padding: 60px 0 30px 0;
+  margin: auto;
+  overflow: hidden;
+  .contenedor-footer {
+    display: flex;
+    width: 90%;
+    justify-content: space-evenly;
+    margin: auto;
+    padding-bottom: 50px;
+    flex-direction: column;
+    border: none;
+    .content-foo {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      h4 {
+        color: white;
+        border: none;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+      }
+      p {
+        width: 140px;
+        color: $color4;
+        border-bottom: 1px solid white;
+        padding-bottom: 20px;
+      }
+    }
+  }
+  .titulo-final {
+    text-align: center;
+    font-size: 20px;
+    margin: 20px 0 0 0;
+    color: $color4;
+  }
+}
+
+// CELULARES
+@media (min-width: 400px) {
+  nav {
+    background: none;
+    display: block;
+    .navbar-list {
+      display: flex;
+      list-style: none;
+      margin-bottom: 0;
+      .navbar-item {
+        position: relative;
+        margin-bottom: 0;
+        .navbar-link {
+          padding: 14.5px 20px 14.5px 20px;
+          text-align: center;
+          text-transform: uppercase;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.2rem;
+          line-height: 40px;
+          text-decoration: none;
+          color: $color1;
+        }
+        .navbar-link::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color1;
+          clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 5%,
+            0 5%,
+            0 95%,
+            100% 95%,
+            100% 100%,
+            0 100%
+          );
+          transform: scaleX(0);
+          transform-origin: bottom center;
+          transition: transform 0.3s ease;
+        }
+
+        .navbar-link:hover::after {
+          transform: scaleX(1);
+          transform-origin: bottom center;
+        }
+        .navbar-link.active {
+          color: $color3;
+        }
+      }
+      .fill {
+        background: $color1;
+        a {
+          color: $color3 !important;
+        }
+        a::after {
+          background-color: $color3 !important;
+        }
+      }
+    }
+  }
+  .opciones {
+    flex: 1;
+    justify-content: center;
+  }
+  .auth {
+    display: none !important;
+  }
+
+  header {
+    height: 700px;
+
+    .textos-header {
+      height: 550px;
+    }
+  }
+}
+
+// CELULAR GRANDE
+@media (min-width: 550px) {
+  // MAIN
+
+  .sobre-nosotros {
+    .container-sobre-nosotros {
+      .imagen-about-us {
+        display: block;
+        width: 38%;
+      }
+      .contenido-textos {
+        width: 62%;
+      }
+    }
+  }
+
+  .clientes {
+    .cards {
+      flex-direction: row;
+      gap: 0;
+      .card {
+        width: 46%;
+      }
+    }
+  }
+
+  .about-services {
+    .servicio-cont {
+      margin-left: 5%;
+      flex-direction: row;
+      width: 90%;
+      .servicio-ind {
+        width: 28%;
+        img {
+          border-bottom: white solid 3px;
+        }
+        h3 {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  // FOOTER
+
+  footer {
+    .contenedor-footer {
+      flex-direction: row;
+      border-bottom: 1px solid $color4;
+      .content-foo {
+        margin-bottom: 20px;
+        text-align: center;
+        h4 {
+          border-bottom: 3px solid $color2;
+        }
+        p {
+          border: none;
+          padding: 0;
+        }
+      }
+    }
+    .titulo-final {
+      font-size: 24px;
+    }
+  }
+}
+
+// PECE
+@media (min-width: 965px) {
+  // HEADER
+  nav {
+    .opciones {
+      flex: 2;
+    }
+    .auth {
+      display: flex !important;
+      flex: 1;
+    }
+  }
+  header {
+    height: 600px;
+    .textos-header {
+      height: 450px;
+    }
+  }
+
+  // MAIN
+
+  .container {
+    margin-bottom: 100px;
+  }
+
+  .clientes {
+    .cards {
+      .card {
+        height: 180px;
+      }
     }
   }
 }

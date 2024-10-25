@@ -9,20 +9,19 @@ interface OptionProps {
 const NavBar = () => {
   return (
     <nav>
-      <div className="container row">
-        <ul className="navbar-list column two-thirds">
-          <Option href="">Inicio</Option>
-          <Option href="">ODS 6</Option>
-          <Option href="">Acerca de nosotros</Option>
-          <Option href="" buttonLike={true}>
+      <div className="navbar-container opciones">
+        <ul className="navbar-list">
+          <Option href="/">Inicio</Option>
+          <Option href="/">Acerca de nosotros</Option>
+          <Option href="/play" buttonLike={true}>
             Jugar
           </Option>
         </ul>
-        <ul className="navbar-list column one-third align-left">
-          <Option href="" buttonLike={true}>
+        <ul className="navbar-list align-left auth">
+          <Option href="/auth" buttonLike={true}>
             Iniciar sesion
           </Option>
-          <Option href="" buttonLike={true}>
+          <Option href="/register" buttonLike={true}>
             Registrarse
           </Option>
         </ul>
