@@ -3,16 +3,90 @@
 @import url("normalize.css");
 
 $color1: #222;
-$color2: #5075db;
-$color3: #879fd3;
+$color2: #5088db;
+$color3: #a9d1ff;
 $color4: #ccc;
-$color5: #3067ff;
+$color5: #0f82ce;
+$color6: #0f98ce;
+$color7: #004464;
 
-// HEADER
+body {
+  overflow-x: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+}
+
+.parche1 {
+  height: 2px;
+  margin-top: -3px;
+}
+
+.parche2 {
+  height: 3px;
+  margin-bottom: -2px;
+  width: 100%;
+}
 
 nav {
   display: none;
 }
+
+nav.border {
+  background-color: $color3;
+  border-bottom: $color1 1px solid;
+}
+
+.container-form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 60%);
+  border: solid $color4 1px;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 20px;
+  input {
+    width: 100%;
+  }
+}
+
+// APP
+
+.app {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  .options {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    padding: 20px;
+    button {
+      margin-left: 5%;
+      width: 90%;
+    }
+  }
+  .seccion-siguiente {
+    width: 90%;
+    button {
+      width: 100%;
+    }
+  }
+}
+
+// HEADER
 
 header {
   width: 100%;
@@ -55,10 +129,16 @@ header {
       color: #fff;
     }
   }
-  .wave {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+}
+
+.low-margin {
+  p {
+    padding: 0 !important;
+    margin-bottom: 5px !important;
+  }
+  h3 {
+    padding: 0 !important;
+    margin-bottom: 5px !important;
   }
 }
 
@@ -92,10 +172,61 @@ main {
   margin-bottom: 60px;
 }
 
+.los-eso-brad {
+  background: linear-gradient(to bottom, $color6, $color3);
+  .titulo {
+    color: $color1;
+    font-size: 55px;
+  }
+  h3,
+  h5,
+  p {
+    margin: 0;
+  }
+  .scrum-product,
+  .back-end,
+  .front-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .team-card {
+      width: 400px;
+    }
+  }
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  height: 240px;
+  img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+  }
+  .text-section {
+    position: relative;
+    width: fit-content;
+    color: $color1;
+    padding: 5px;
+    h3 {
+      font-size: 24px;
+    }
+    h5 {
+      font-size: 20px;
+    }
+  }
+}
+
 .sobre-nosotros {
   display: flex;
   flex-direction: column;
   width: 80%;
+  .titulo {
+    margin-bottom: 20px;
+  }
   .container-sobre-nosotros {
     display: flex;
     justify-content: space-evenly;
@@ -107,6 +238,18 @@ main {
       flex-direction: column;
       justify-content: center;
       width: 90%;
+      .objetivos {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+        align-items: stretch;
+        div {
+          padding: 10px;
+          h3 {
+            font-size: 18px;
+          }
+        }
+      }
       h3 {
         font-size: 23.5px;
         margin-bottom: 15px;
@@ -141,31 +284,34 @@ main {
     justify-content: space-evenly;
     align-items: center;
     gap: 30px;
-    .card {
-      background: linear-gradient(to left, $color2, $color5);
-      display: flex;
-      width: 80%;
-      height: 200px;
-      align-items: center;
-      justify-content: space-evenly;
-      border-radius: 5px;
-      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
-      img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border: 3px solid #fff;
-        border-radius: 50%;
-        display: block;
-      }
-      .contenido-texto-card {
-        width: 60%;
-        color: #fff;
-        p {
-          font-weight: 300;
-          padding-top: 5px;
-        }
-      }
+  }
+}
+
+.card {
+  background: linear-gradient(to left, $color2, $color5);
+  display: flex;
+  width: 80%;
+  height: 200px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
+  img,
+  svg {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: block;
+    color: #fff;
+  }
+  .contenido-texto-card {
+    width: 60%;
+    color: #fff;
+    p {
+      font-weight: 300;
+      padding-top: 5px;
     }
   }
 }
@@ -329,16 +475,24 @@ footer {
 
 // CELULAR GRANDE
 @media (min-width: 550px) {
+  .container-form {
+    width: 510px;
+  }
+
   // MAIN
 
   .sobre-nosotros {
     .container-sobre-nosotros {
-      .imagen-about-us {
-        display: block;
-        width: 38%;
-      }
       .contenido-textos {
-        width: 62%;
+        .objetivos {
+          grid-template-columns: repeat(2, 1fr);
+          div {
+            padding: 10px;
+            h3 {
+              font-size: 15px;
+            }
+          }
+        }
       }
     }
   }
@@ -347,10 +501,11 @@ footer {
     .cards {
       flex-direction: row;
       gap: 0;
-      .card {
-        width: 46%;
-      }
     }
+  }
+
+  .card {
+    width: 46%;
   }
 
   .about-services {
@@ -406,6 +561,27 @@ footer {
       flex: 1;
     }
   }
+
+  // APP
+
+  .app {
+    .options {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 50px;
+      width: 70%;
+      button {
+        width: 100%;
+        margin: 0;
+      }
+    }
+    .seccion-siguiente {
+      width: 70%;
+    }
+  }
+
+  // HEADER
+
   header {
     height: 600px;
     .textos-header {
@@ -415,14 +591,133 @@ footer {
 
   // MAIN
 
+  .sobre-nosotros {
+    .container-sobre-nosotros {
+      .imagen-about-us {
+        display: block;
+        width: 38%;
+      }
+      .contenido-textos {
+        width: 62%;
+        .objetivos {
+          div {
+            h3 {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .los-eso-brad {
+    .scrum-product,
+    .back-end {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      .team-card {
+        width: 50%;
+      }
+    }
+    .front-end {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .team-card {
+        width: 300px;
+      }
+    }
+    .back-end {
+      margin-bottom: 100px;
+    }
+  }
+
+  .team-card {
+    display: block;
+    height: 300px;
+    img {
+      width: 400px;
+      height: 400px;
+    }
+    .text-section {
+      position: relative;
+      height: 80px;
+      width: fit-content;
+      top: -258px;
+      border: $color7 solid 1px;
+      border-radius: 10px;
+      background: #ffffffaa;
+      color: $color7;
+      h3 {
+        font-size: 32px;
+      }
+      h5 {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .left {
+    img {
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+    div {
+      left: 260px;
+    }
+  }
+
+  .right {
+    img {
+      position: absolute;
+      right: 0;
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+    }
+    div {
+      top: 149px !important;
+      left: 100%;
+      transform: translateX(-440px);
+    }
+  }
+
+  .center {
+    img {
+      transform: translateX(-50px);
+      border-radius: 50px;
+    }
+    div {
+      position: absolute;
+      right: 100%;
+      transform: translateX(540px);
+    }
+  }
+
   .container {
     margin-bottom: 100px;
   }
 
-  .clientes {
-    .cards {
-      .card {
-        height: 180px;
+  .card {
+    height: 180px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .sobre-nosotros {
+    .container-sobre-nosotros {
+      .contenido-textos {
+        p {
+          font-size: 18px;
+        }
+        .objetivos {
+          div {
+            h3 {
+              font-size: 26px;
+            }
+          }
+        }
       }
     }
   }

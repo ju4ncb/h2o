@@ -1,8 +1,78 @@
 @import url("page-transition-loading-animation.css");
 @import url("skeleton.css");
 @import url("normalize.css");
+body {
+  overflow-x: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+}
+
+.parche1 {
+  height: 2px;
+  margin-top: -3px;
+}
+
+.parche2 {
+  height: 3px;
+  margin-bottom: -2px;
+  width: 100%;
+}
+
 nav {
   display: none;
+}
+
+nav.border {
+  background-color: #a9d1ff;
+  border-bottom: #222 1px solid;
+}
+
+.container-form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 60%);
+  border: solid #ccc 1px;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 20px;
+}
+.container-form input {
+  width: 100%;
+}
+
+.app {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.app .options {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  padding: 20px;
+}
+.app .options button {
+  margin-left: 5%;
+  width: 90%;
+}
+.app .seccion-siguiente {
+  width: 90%;
+}
+.app .seccion-siguiente button {
+  width: 100%;
 }
 
 header {
@@ -35,10 +105,14 @@ header .textos-header h2 {
   font-weight: 300;
   color: #fff;
 }
-header .wave {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+
+.low-margin p {
+  padding: 0 !important;
+  margin-bottom: 5px !important;
+}
+.low-margin h3 {
+  padding: 0 !important;
+  margin-bottom: 5px !important;
 }
 
 .align-left {
@@ -63,16 +137,69 @@ main {
 }
 
 .titulo {
-  color: #3067ff;
+  color: #0f82ce;
   font-size: 30px;
   text-align: center;
   margin-bottom: 60px;
+}
+
+.los-eso-brad {
+  background: linear-gradient(to bottom, #0f98ce, #a9d1ff);
+}
+.los-eso-brad .titulo {
+  color: #222;
+  font-size: 55px;
+}
+.los-eso-brad h3,
+.los-eso-brad h5,
+.los-eso-brad p {
+  margin: 0;
+}
+.los-eso-brad .scrum-product,
+.los-eso-brad .back-end,
+.los-eso-brad .front-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.los-eso-brad .scrum-product .team-card,
+.los-eso-brad .back-end .team-card,
+.los-eso-brad .front-end .team-card {
+  width: 400px;
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  height: 240px;
+}
+.team-card img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+}
+.team-card .text-section {
+  position: relative;
+  width: fit-content;
+  color: #222;
+  padding: 5px;
+}
+.team-card .text-section h3 {
+  font-size: 24px;
+}
+.team-card .text-section h5 {
+  font-size: 20px;
 }
 
 .sobre-nosotros {
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+.sobre-nosotros .titulo {
+  margin-bottom: 20px;
 }
 .sobre-nosotros .container-sobre-nosotros {
   display: flex;
@@ -87,12 +214,24 @@ main {
   justify-content: center;
   width: 90%;
 }
+.sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  align-items: stretch;
+}
+.sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div {
+  padding: 10px;
+}
+.sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div h3 {
+  font-size: 18px;
+}
 .sobre-nosotros .container-sobre-nosotros .contenido-textos h3 {
   font-size: 23.5px;
   margin-bottom: 15px;
 }
 .sobre-nosotros .container-sobre-nosotros .contenido-textos h3 span {
-  background: #5075db;
+  background: #5088db;
   color: #fff;
   border-radius: 50%;
   display: inline-block;
@@ -120,8 +259,9 @@ main {
   align-items: center;
   gap: 30px;
 }
-.clientes .cards .card {
-  background: linear-gradient(to left, #5075db, #3067ff);
+
+.card {
+  background: linear-gradient(to left, #5088db, #0f82ce);
   display: flex;
   width: 80%;
   height: 200px;
@@ -130,26 +270,28 @@ main {
   border-radius: 5px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
 }
-.clientes .cards .card img {
+.card img,
+.card svg {
   width: 100px;
   height: 100px;
   object-fit: cover;
   border: 3px solid #fff;
   border-radius: 50%;
   display: block;
+  color: #fff;
 }
-.clientes .cards .card .contenido-texto-card {
+.card .contenido-texto-card {
   width: 60%;
   color: #fff;
 }
-.clientes .cards .card .contenido-texto-card p {
+.card .contenido-texto-card p {
   font-weight: 300;
   padding-top: 5px;
 }
 
 .about-services {
   width: 100%;
-  background-color: #3067ff;
+  background-color: #0f82ce;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -263,16 +405,16 @@ footer .titulo-final {
     transform-origin: bottom center;
   }
   nav .navbar-list .navbar-item .navbar-link.active {
-    color: #879fd3;
+    color: #a9d1ff;
   }
   nav .navbar-list .fill {
     background: #222;
   }
   nav .navbar-list .fill a {
-    color: #879fd3 !important;
+    color: #a9d1ff !important;
   }
   nav .navbar-list .fill a::after {
-    background-color: #879fd3 !important;
+    background-color: #a9d1ff !important;
   }
   .opciones {
     flex: 1;
@@ -289,18 +431,23 @@ footer .titulo-final {
   }
 }
 @media (min-width: 550px) {
-  .sobre-nosotros .container-sobre-nosotros .imagen-about-us {
-    display: block;
-    width: 38%;
+  .container-form {
+    width: 510px;
   }
-  .sobre-nosotros .container-sobre-nosotros .contenido-textos {
-    width: 62%;
+  .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div {
+    padding: 10px;
+  }
+  .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div h3 {
+    font-size: 15px;
   }
   .clientes .cards {
     flex-direction: row;
     gap: 0;
   }
-  .clientes .cards .card {
+  .card {
     width: 46%;
   }
   .about-services .servicio-cont {
@@ -326,7 +473,7 @@ footer .titulo-final {
     text-align: center;
   }
   footer .contenedor-footer .content-foo h4 {
-    border-bottom: 3px solid #5075db;
+    border-bottom: 3px solid #5088db;
   }
   footer .contenedor-footer .content-foo p {
     border: none;
@@ -344,17 +491,121 @@ footer .titulo-final {
     display: flex !important;
     flex: 1;
   }
+  .app .options {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 50px;
+    width: 70%;
+  }
+  .app .options button {
+    width: 100%;
+    margin: 0;
+  }
+  .app .seccion-siguiente {
+    width: 70%;
+  }
   header {
     height: 600px;
   }
   header .textos-header {
     height: 450px;
   }
+  .sobre-nosotros .container-sobre-nosotros .imagen-about-us {
+    display: block;
+    width: 38%;
+  }
+  .sobre-nosotros .container-sobre-nosotros .contenido-textos {
+    width: 62%;
+  }
+  .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div h3 {
+    font-size: 18px;
+  }
+  .los-eso-brad .scrum-product,
+  .los-eso-brad .back-end {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  .los-eso-brad .scrum-product .team-card,
+  .los-eso-brad .back-end .team-card {
+    width: 50%;
+  }
+  .los-eso-brad .front-end {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .los-eso-brad .front-end .team-card {
+    width: 300px;
+  }
+  .los-eso-brad .back-end {
+    margin-bottom: 100px;
+  }
+  .team-card {
+    display: block;
+    height: 300px;
+  }
+  .team-card img {
+    width: 400px;
+    height: 400px;
+  }
+  .team-card .text-section {
+    position: relative;
+    height: 80px;
+    width: fit-content;
+    top: -258px;
+    border: #004464 solid 1px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6666666667);
+    color: #004464;
+  }
+  .team-card .text-section h3 {
+    font-size: 32px;
+  }
+  .team-card .text-section h5 {
+    font-size: 28px;
+  }
+  .left img {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+  .left div {
+    left: 260px;
+  }
+  .right img {
+    position: absolute;
+    right: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+  .right div {
+    top: 149px !important;
+    left: 100%;
+    transform: translateX(-440px);
+  }
+  .center img {
+    transform: translateX(-50px);
+    border-radius: 50px;
+  }
+  .center div {
+    position: absolute;
+    right: 100%;
+    transform: translateX(540px);
+  }
   .container {
     margin-bottom: 100px;
   }
-  .clientes .cards .card {
+  .card {
     height: 180px;
+  }
+}
+@media (min-width: 1400px) {
+  .sobre-nosotros .container-sobre-nosotros .contenido-textos p {
+    font-size: 18px;
+  }
+  .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div h3 {
+    font-size: 26px;
   }
 }
 

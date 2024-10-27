@@ -6,13 +6,17 @@ interface OptionProps {
   href: string;
 }
 
-const NavBar = () => {
+interface NavBarProps {
+  withBorder?: boolean;
+}
+
+const NavBar = ({ withBorder }: NavBarProps) => {
   return (
-    <nav>
+    <nav className={withBorder ? "border" : ""}>
       <div className="navbar-container opciones">
         <ul className="navbar-list">
           <Option href="/">Inicio</Option>
-          <Option href="/">Acerca de nosotros</Option>
+          <Option href="/about-us">Acerca de nosotros</Option>
           <Option href="/play" buttonLike={true}>
             Jugar
           </Option>

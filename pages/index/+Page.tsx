@@ -7,13 +7,9 @@ import ilustracion3 from "../../renderer/img/ilustracion3.svg";
 import ilustracion4 from "../../renderer/img/ilustracion4.svg";
 import Card from "../../components/Card";
 import Servicio from "../../components/Servicio";
+import Footer from "../../components/Footer";
 
 export { Page };
-
-interface FooterItemProps {
-  titulo: string;
-  descripcion: string;
-}
 
 function Page() {
   return (
@@ -23,8 +19,9 @@ function Page() {
         <h2>Juego de preguntas</h2>
       </Header>
       <main>
-        <AboutUs />
+        <PropositoAlcance />
         <Clientes />
+        <div className="parche2" />
         <Instrucciones />
       </main>
       <Footer />
@@ -57,7 +54,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
 
 // Main
 
-const AboutUs = () => {
+const PropositoAlcance = () => {
   return (
     <section className="container sobre-nosotros">
       <h2 className="titulo">Nuestro producto</h2>
@@ -65,22 +62,25 @@ const AboutUs = () => {
         <img src={ilustracion2} alt="" className="imagen-about-us" />
         <div className="contenido-textos">
           <h3>
-            <span>1</span>Visión
+            <span>1</span>Propósito
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-            veniam eius aspernatur ad consequuntur aperiam minima sed dicta odit
-            numquam sapiente quam eum, architecto animi pariatur, velit
-            doloribus laboriosam ut.
+            Informar y educar a las personas sobre el agua limpia y el
+            saneamiento a través de nuestra aplicación de preguntas triviales
+            inspiradas en los objetivos del ODS 6. La aplicación permitirá a los
+            usuarios adquirir conocimientos esenciales de una manera interactiva
+            y atractiva.
           </p>
           <h3>
-            <span>2</span>Misión
+            <span>2</span>Alcance
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-            veniam eius aspernatur ad consequuntur aperiam minima sed dicta odit
-            numquam sapiente quam eum, architecto animi pariatur, velit
-            doloribus laboriosam ut.
+            Desarrollar una aplicación en la que las personas puedan aprender
+            conceptos básicos y todo lo relacionado con los Objetivos de
+            Desarrollo Sostenible a través de preguntas dinámicas. Esta
+            aplicación no solo ofrecerá contenido educativo, sino también la
+            posibilidad de registrar el progreso del usuario y proporcionar
+            retroalimentación inmediata sobre las respuestas.
           </p>
         </div>
       </div>
@@ -108,14 +108,14 @@ const Clientes = () => {
 const Instrucciones = () => {
   return (
     <section className="about-services container">
-      <div className="wave" style={{ height: 150, overflow: "hidden" }}>
+      <div style={{ height: 150, overflow: "hidden" }}>
         <svg
           viewBox="0 0 500 150"
           preserveAspectRatio="none"
           style={{ height: "100%", width: "100%" }}
         >
           <path
-            d="M0.00,100.0 C150.00,150.00 350.0,50.00 500.00,100.0 L500.00,00.00 L0.00,00.00 Z"
+            d="M0.00,100.0 C150.00,200.00 350.0,50.00 500.00,100.0 L500.00,00.00 L0.00,00.00 Z"
             style={{ stroke: "none", fill: "#fff" }}
           ></path>
         </svg>
@@ -124,52 +124,17 @@ const Instrucciones = () => {
         <h2 className="titulo">Instrucciones</h2>
         <div className="servicio-cont">
           <Servicio title="Sistema de puntos" image={ilustracion1}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-            qui?
+            Cada pregunta respondida correctamente equivale a un punto.
           </Servicio>
-
-          <div className="servicio-ind">
-            <img src={ilustracion4} alt="" />
-            <h3>Temas</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-              qui?
-            </p>
-          </div>
-          <div className="servicio-ind">
-            <img src={ilustracion3} alt="" />
-            <h3>¿Cómo ganar?</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-              qui?
-            </p>
-          </div>
+          <Servicio title="Temas" image={ilustracion4}>
+            Los temas a desarrollar son principalmente acerca del objetivo de
+            desarrollo sostenible 6.
+          </Servicio>
+          <Servicio title="¿Cómo ganar?" image={ilustracion3}>
+            Se gana con cumplir con al menos unos 6 puntos.
+          </Servicio>
         </div>
       </div>
     </section>
-  );
-};
-
-// Footer
-
-const Footer = () => {
-  return (
-    <footer>
-      <div className="contenedor-footer">
-        <FooterItem titulo="Teléfono" descripcion="69420" />
-        <FooterItem titulo="Correo" descripcion="h2o@mail.com" />
-        <FooterItem titulo="Dirección" descripcion="En tu casa" />
-      </div>
-      <h2 className="titulo-final">&copy; Los Eso brad</h2>
-    </footer>
-  );
-};
-
-const FooterItem = ({ titulo, descripcion }: FooterItemProps) => {
-  return (
-    <div className="content-foo">
-      <h4>{titulo}</h4>
-      <p>{descripcion}</p>
-    </div>
   );
 };

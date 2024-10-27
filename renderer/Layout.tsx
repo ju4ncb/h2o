@@ -1,10 +1,9 @@
 export { Layout };
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PageContextProvider } from "./usePageContext";
 import type { PageContext } from "vike/types";
 import "./css/index.css";
-import "./Layout.css";
 
 function Layout({
   children,
