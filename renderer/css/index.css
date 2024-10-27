@@ -57,6 +57,9 @@ nav.border {
   width: 100%;
   height: 100%;
 }
+.app h5 {
+  width: 90%;
+}
 .app .options {
   width: 100%;
   display: grid;
@@ -96,23 +99,34 @@ header .textos-header {
   flex-direction: column;
   text-align: center;
 }
+header .textos-header a {
+  text-decoration: none;
+}
 header .textos-header h1 {
   font-size: 50px;
   color: #fff;
 }
-header .textos-header h2 {
+header .textos-header h2,
+header .textos-header h3 {
   cursor: pointer;
-  font-size: 30px;
   font-weight: 300;
   color: #fff;
   background: rgba(255, 255, 255, 0.2666666667);
   border-radius: 10px;
   padding: 5px;
   transition: color 0.3s ease, background-color 0.3s ease;
+  width: 300px;
 }
-header .textos-header h2:hover {
+header .textos-header h2:hover,
+header .textos-header h3:hover {
   color: #a9d1ff;
   background-color: rgba(255, 255, 255, 0.2);
+}
+header .textos-header h2 {
+  font-size: 30px;
+}
+header .textos-header h3 {
+  font-size: 26px;
 }
 
 .low-margin p {
@@ -153,11 +167,13 @@ main {
 }
 
 .los-eso-brad {
+  padding: 0;
   background: linear-gradient(to bottom, #0f98ce, #a9d1ff);
 }
 .los-eso-brad .titulo {
   color: #222;
-  font-size: 55px;
+  font-size: 40px;
+  margin: 0;
 }
 .los-eso-brad h3,
 .los-eso-brad h5,
@@ -176,18 +192,17 @@ main {
 .los-eso-brad .scrum-product .team-card,
 .los-eso-brad .back-end .team-card,
 .los-eso-brad .front-end .team-card {
-  width: 400px;
+  width: 350px;
 }
 
 .team-card {
   display: flex;
   align-items: center;
-  height: 240px;
+  height: 210px;
 }
 .team-card img {
-  width: 240px;
-  height: 240px;
-  object-fit: cover;
+  width: 210px;
+  height: 210px;
 }
 .team-card .text-section {
   position: relative;
@@ -196,10 +211,10 @@ main {
   padding: 5px;
 }
 .team-card .text-section h3 {
-  font-size: 24px;
+  font-size: 20px;
 }
 .team-card .text-section h5 {
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .sobre-nosotros {
@@ -438,10 +453,18 @@ footer .titulo-final {
   header .textos-header {
     height: 550px;
   }
+  .los-eso-brad .titulo {
+    margin-top: 50px;
+  }
 }
 @media (min-width: 550px) {
   .container-form {
     width: 510px;
+  }
+  .sobre-nosotros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos {
     grid-template-columns: repeat(2, 1fr);
@@ -451,6 +474,27 @@ footer .titulo-final {
   }
   .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div h3 {
     font-size: 15px;
+  }
+  .los-eso-brad .titulo {
+    font-size: 50px;
+  }
+  .los-eso-brad .scrum-product .team-card,
+  .los-eso-brad .front-end .team-card,
+  .los-eso-brad .back-end .team-card {
+    width: 400px;
+  }
+  .team-card {
+    height: 220px;
+  }
+  .team-card img {
+    width: 220px;
+    height: 220px;
+  }
+  .team-card .text-section h3 {
+    font-size: 20px;
+  }
+  .team-card .text-section h5 {
+    font-size: 17px;
   }
   .clientes .cards {
     flex-direction: row;

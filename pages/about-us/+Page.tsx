@@ -12,9 +12,7 @@ function Page() {
     <>
       <NuestroEquipo>
         <NavBar />
-        <h1 className="titulo" style={{ marginTop: 50 }}>
-          Conoce al equipo
-        </h1>
+        <h1 className="titulo">Conoce al equipo</h1>
         <div className="scrum-product">
           <TeamCard
             img={juanC}
@@ -72,7 +70,7 @@ const NuestroEquipo = ({ children }: { children?: React.ReactNode }) => {
         >
           <path
             d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-            style={{ stroke: "none", fill: "#fff" }}
+            style={{ stroke: "none", fill: "#fff", width: "100%" }}
           ></path>
         </svg>
       </div>

@@ -67,6 +67,9 @@ nav.border {
   align-items: center;
   width: 100%;
   height: 100%;
+  h5 {
+    width: 90%;
+  }
   .options {
     width: 100%;
     display: grid;
@@ -119,23 +122,34 @@ header {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    a {
+      text-decoration: none;
+    }
     h1 {
       font-size: 50px;
       color: #fff;
     }
-    h2 {
+    h2,
+    h3 {
       cursor: pointer;
-      font-size: 30px;
       font-weight: 300;
       color: #fff;
       background: #ffffff44;
       border-radius: 10px;
       padding: 5px;
       transition: color 0.3s ease, background-color 0.3s ease;
+      width: 300px;
     }
-    h2:hover {
+    h2:hover,
+    h3:hover {
       color: $color3;
       background-color: #ffffff33;
+    }
+    h2 {
+      font-size: 30px;
+    }
+    h3 {
+      font-size: 26px;
     }
   }
 }
@@ -182,10 +196,12 @@ main {
 }
 
 .los-eso-brad {
+  padding: 0;
   background: linear-gradient(to bottom, $color6, $color3);
   .titulo {
     color: $color1;
-    font-size: 55px;
+    font-size: 40px;
+    margin: 0;
   }
   h3,
   h5,
@@ -201,7 +217,7 @@ main {
     align-items: center;
     width: 100%;
     .team-card {
-      width: 400px;
+      width: 350px;
     }
   }
 }
@@ -209,11 +225,10 @@ main {
 .team-card {
   display: flex;
   align-items: center;
-  height: 240px;
+  height: 210px;
   img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
+    width: 210px;
+    height: 210px;
   }
   .text-section {
     position: relative;
@@ -221,10 +236,10 @@ main {
     color: $color1;
     padding: 5px;
     h3 {
-      font-size: 24px;
+      font-size: 20px;
     }
     h5 {
-      font-size: 20px;
+      font-size: 17px;
     }
   }
 }
@@ -480,6 +495,12 @@ footer {
       height: 550px;
     }
   }
+
+  .los-eso-brad {
+    .titulo {
+      margin-top: 50px;
+    }
+  }
 }
 
 // CELULAR GRANDE
@@ -491,6 +512,9 @@ footer {
   // MAIN
 
   .sobre-nosotros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .container-sobre-nosotros {
       .contenido-textos {
         .objetivos {
@@ -502,6 +526,35 @@ footer {
             }
           }
         }
+      }
+    }
+  }
+
+  .los-eso-brad {
+    .titulo {
+      font-size: 50px;
+    }
+    .scrum-product,
+    .front-end,
+    .back-end {
+      .team-card {
+        width: 400px;
+      }
+    }
+  }
+
+  .team-card {
+    height: 220px;
+    img {
+      width: 220px;
+      height: 220px;
+    }
+    .text-section {
+      h3 {
+        font-size: 20px;
+      }
+      h5 {
+        font-size: 17px;
       }
     }
   }

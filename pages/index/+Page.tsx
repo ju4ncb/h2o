@@ -16,8 +16,12 @@ function Page() {
     <>
       <Header>
         <h1>H2O Esperanza</h1>
+
+        <a href="/play">
+          <h2>Jugar</h2>
+        </a>
         <a href="/auth">
-          <h2>Iniciar sesión</h2>
+          <h3>Iniciar sesión</h3>
         </a>
       </Header>
       <main>
@@ -86,6 +90,9 @@ const PropositoAlcance = () => {
           </p>
         </div>
       </div>
+      <a href="/about-us">
+        <h6 style={{ marginBottom: 0 }}>Más información acerca de nosotros</h6>
+      </a>
     </section>
   );
 };
@@ -96,11 +103,11 @@ const Clientes = () => {
       <h2 className="titulo">Opiniones de nuestros clientes</h2>
       <div className="cards">
         <Card image={migue} name="Miguel Barragan">
-          menuda mierda
+          Opinion de cliente 1
         </Card>
 
         <Card image={juanC} name="Juan Caballero">
-          este juego lo hicieron con el culo
+          Opinion de cliente 2
         </Card>
       </div>
     </section>
