@@ -90,6 +90,11 @@ function Page() {
             type="password"
           />
         </FormItem>
+        <a href="/auth">
+          <p style={{ marginBottom: 0 }}>
+            ¿Ya tienes cuenta? Inicia sesión aquí
+          </p>
+        </a>
       </Form>
     </>
   );

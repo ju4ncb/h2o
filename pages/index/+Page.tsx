@@ -16,7 +16,9 @@ function Page() {
     <>
       <Header>
         <h1>H2O Esperanza</h1>
-        <h2>Juego de preguntas</h2>
+        <a href="/auth">
+          <h2>Iniciar sesión</h2>
+        </a>
       </Header>
       <main>
         <PropositoAlcance />

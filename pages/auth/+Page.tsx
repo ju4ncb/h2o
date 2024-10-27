@@ -56,6 +56,9 @@ function Page() {
             type="password"
           />
         </FormItem>
+        <a href="/register">
+          <p style={{ marginBottom: 0 }}>¿No tienes cuenta? Registrate aquí</p>
+        </a>
       </Form>
     </>
   );

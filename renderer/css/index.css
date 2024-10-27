@@ -101,9 +101,18 @@ header .textos-header h1 {
   color: #fff;
 }
 header .textos-header h2 {
+  cursor: pointer;
   font-size: 30px;
   font-weight: 300;
   color: #fff;
+  background: rgba(255, 255, 255, 0.2666666667);
+  border-radius: 10px;
+  padding: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+header .textos-header h2:hover {
+  color: #a9d1ff;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .low-margin p {
