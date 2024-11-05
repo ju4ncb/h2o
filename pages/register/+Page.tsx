@@ -15,13 +15,24 @@ function Page() {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    const response = await fetch("/metodo", {
+    const response = await fetch("/register-user", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        usuario: data.username,
+        contrasena: data.contrasena,
+        nm1: data.nombre1,
+        nm2: data.nombre2,
+        ap1: data.apellido1,
+        ap2: data.apellido2,
+      }),
       headers: { "Content-Type": "application/json" },
     });
-    const responseData = await response.json();
-    reset();
+    const responseMessage = await response.text();
+    if (response.status === 409) {
+      alert(responseMessage);
+    } else {
+      window.location.href = "/";
+    }
   };
 
   return (

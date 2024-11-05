@@ -8,21 +8,31 @@ import ilustracion4 from "../../renderer/img/ilustracion4.svg";
 import Card from "../../components/Card";
 import Servicio from "../../components/Servicio";
 import Footer from "../../components/Footer";
+import { useData } from "../../renderer/useData";
+import type { Data } from "./+data";
+import { UsuarioTipo } from "../../server/clases/usuario";
 
 export { Page };
 
 function Page() {
+  const { user } = useData<Data>();
   return (
     <>
-      <Header>
+      <Header user={user}>
         <h1>H2O Esperanza</h1>
 
         <a href="/play">
-          <h2>Jugar</h2>
+          <h2>Demo</h2>
         </a>
-        <a href="/auth">
-          <h3>Iniciar sesión</h3>
-        </a>
+        {user ? (
+          <a href="">
+            <h3>Hola! {user.username}</h3>
+          </a>
+        ) : (
+          <a href="/login">
+            <h3>Iniciar sesión</h3>
+          </a>
+        )}
       </Header>
       <main>
         <PropositoAlcance />
@@ -37,10 +47,16 @@ function Page() {
 
 // Header
 
-const Header = ({ children }: { children?: React.ReactNode }) => {
+const Header = ({
+  children,
+  user,
+}: {
+  children?: React.ReactNode;
+  user: UsuarioTipo;
+}) => {
   return (
     <header>
-      <NavBar />
+      <NavBar user={user} />
       <section className="textos-header">{children}</section>
       <div className="wave" style={{ height: 150, overflow: "hidden" }}>
         <svg
@@ -103,11 +119,11 @@ const Clientes = () => {
       <h2 className="titulo">Opiniones de nuestros clientes</h2>
       <div className="cards">
         <Card image={migue} name="Miguel Barragan">
-          Opinion de cliente 1
+          Opinion 1
         </Card>
 
         <Card image={juanC} name="Juan Caballero">
-          Opinion de cliente 2
+          Opinion 2
         </Card>
       </div>
     </section>

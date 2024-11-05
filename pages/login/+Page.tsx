@@ -2,6 +2,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import Form from "../../components/Form";
 import NavBar from "../../components/NavBar";
 import FormItem from "../../components/FormItem";
+import { PageContext } from "vike/types";
 
 export { Page };
 
@@ -15,13 +16,23 @@ function Page() {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    const response = await fetch("/metodo", {
+    const response = await fetch("/auth", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        usuario: data.username,
+        contrasena: data.contrasena,
+      }),
       headers: { "Content-Type": "application/json" },
     });
-    const responseData = await response.json();
-    reset();
+
+    if (response.status === 401) {
+      const responseMessage = await response.text();
+      alert(responseMessage);
+    } else {
+      const responseData = await response.json();
+      console.log(responseData);
+      window.location.href = "/";
+    }
   };
 
   return (
@@ -48,7 +59,7 @@ function Page() {
         >
           <input
             {...register("contrasena", {
-              required: "Ingrese una contrasena",
+              required: "Ingrese una contraseña",
               minLength: { value: 4, message: "Contraseña muy corta." },
               maxLength: { value: 50, message: "Contraseña muy larga." },
             })}

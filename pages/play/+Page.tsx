@@ -1,11 +1,14 @@
 import NavBar from "../../components/NavBar";
+import { useData } from "../../renderer/useData";
+import type { Data } from "./+data";
 
 export { Page };
 
 function Page() {
+  const { user } = useData<Data>();
   return (
     <>
-      <NavBar />
+      <NavBar user={user} />
       <div className="app">
         <h2>Pregunta X</h2>
         <h5 id="pregunta">

@@ -4,18 +4,21 @@ import juanC from "../../renderer/img/juancaballero.jpeg";
 import def from "../../renderer/img/default-icon.jpeg";
 import ilustracion5 from "../../renderer/img/ilustracion5.png";
 import TeamCard from "../../components/TeamCard";
+import type { Data } from "./+data";
+import { useData } from "../../renderer/useData";
 
 export { Page };
 
 function Page() {
+  const { user } = useData<Data>();
   return (
     <>
       <NuestroEquipo>
-        <NavBar />
+        <NavBar user={user} />
         <h1 className="titulo">Conoce al equipo</h1>
         <div className="scrum-product">
           <TeamCard
-            img={juanC}
+            img={def}
             name="Juan Caballero"
             occupation="Scrum Master"
             position="left"

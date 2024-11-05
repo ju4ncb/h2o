@@ -58,7 +58,8 @@ nav.border {
   height: 100%;
 }
 .app h5 {
-  width: 90%;
+  text-align: center;
+  width: 100%;
 }
 .app .options {
   width: 100%;

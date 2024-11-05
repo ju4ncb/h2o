@@ -1,2 +1,5 @@
 node_modules/
 dist/
+server/bd.sql
+server/dbConfig.ts
+server/secretVariables.ts
