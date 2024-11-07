@@ -16,18 +16,30 @@ export { Page };
 
 function Page() {
   const { user } = useData<Data>();
+  async function logout(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+    e.preventDefault();
+    await fetch("/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   return (
     <>
       <Header user={user}>
         <h1>H2O Esperanza</h1>
-
-        <a href="/play">
-          <h2>Demo</h2>
-        </a>
         {user ? (
-          <a href="">
-            <h3>Hola! {user.username}</h3>
-          </a>
+          <>
+            <h4 style={{ color: "white" }}>Hola! {user.username}</h4>
+            <a href={`/me`}>
+              <h3>Mi cuenta</h3>
+            </a>
+            <a href={`/logout`}>
+              <h3>Cerrar sesion</h3>
+            </a>
+            <a href="/play">
+              <h2>Jugar demo</h2>
+            </a>
+          </>
         ) : (
           <a href="/login">
             <h3>Iniciar sesión</h3>

@@ -73,7 +73,7 @@ async function startServer() {
       `username = "${usuario}" AND passwd = "${contrasena}"`
     )) as UsuarioTipo[];
     if (rows[0]) {
-      req.session.user = rows[0];
+      req.session.user = rows[0] as UsuarioTipo;
       res.status(200).json({
         message: "Usuario autentificado",
         user: req.session.user,
@@ -105,10 +105,16 @@ async function startServer() {
       ["username", "passwd", "nm1", "nm2", "ap1", "ap2", "tipo_usuario"],
       [usuario, contrasena, nm1, nm2, ap1, ap2, "1"]
     );
+    res.status(200).send("Usuario registrado!");
   });
 
-  app.post("/validate-token", async (req, res) => {
-    const { token } = req.body;
+  app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).send("Error al destruir sesión");
+      }
+      res.redirect("/");
+    });
   });
 
   // Vike middleware. It should always be our last middleware (because it's a

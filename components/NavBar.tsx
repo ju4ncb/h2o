@@ -25,9 +25,12 @@ const NavBar = ({ withBorder, user }: NavBarProps) => {
         </ul>
         <ul className="navbar-list align-left auth">
           {user ? (
-            <Option href="" buttonLike={true}>
-              {user.username}
-            </Option>
+            <>
+              <Option href="" buttonLike={true}>
+                {user.username}
+              </Option>
+              <Option href="/logout">Cerrar sesion</Option>
+            </>
           ) : (
             <>
               <Option href="/login" buttonLike={true}>
