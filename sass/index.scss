@@ -40,10 +40,12 @@ nav.border {
   border-bottom: $color1 1px solid;
 }
 
-.container-form {
+// FORM
+
+.container-form,
+.container-form-smaller {
   position: absolute;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 80%;
   bottom: 50%;
   left: 50%;
@@ -52,8 +54,17 @@ nav.border {
   border-radius: 10px;
   padding: 20px;
   gap: 20px;
-  input {
-    width: 100%;
+  h2 {
+    text-align: center;
+    margin: 0;
+  }
+  .inputs {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 5px;
+    input {
+      width: 100%;
+    }
   }
 }
 
@@ -130,27 +141,32 @@ header {
       font-size: 50px;
       color: #fff;
     }
-    h2,
-    h3 {
-      cursor: pointer;
-      font-weight: 300;
-      color: #fff;
-      background: #ffffff44;
+
+    .opciones-header {
       border-radius: 10px;
-      padding: 5px;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      width: 300px;
-    }
-    h2:hover,
-    h3:hover {
-      color: $color3;
-      background-color: #ffffff33;
-    }
-    h2 {
-      font-size: 30px;
-    }
-    h3 {
-      font-size: 26px;
+      overflow: hidden;
+      h2,
+      h3 {
+        cursor: pointer;
+        font-weight: 300;
+        color: #fff;
+        background: #ffffff44;
+        padding: 5px;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        width: 300px;
+        margin: 0;
+      }
+      h2:hover,
+      h3:hover {
+        color: $color3;
+        background-color: #ffffff33;
+      }
+      h2 {
+        font-size: 30px;
+      }
+      h3 {
+        font-size: 26px;
+      }
     }
   }
 }
@@ -416,6 +432,58 @@ footer {
   }
 }
 
+// ME
+
+.me-container {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  h3 {
+    margin: 0;
+  }
+  .me {
+    border: $color4 solid 1px;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    form {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+    }
+    div {
+      .one-third {
+        text-align: center;
+        h5 {
+          font-size: 18px;
+          line-height: 36px;
+          margin: 0;
+        }
+      }
+      .two-thirds {
+        text-align: center;
+      }
+      input {
+        width: 85%;
+      }
+      margin-bottom: 5px;
+    }
+  }
+  .button-volver {
+    width: 200px;
+  }
+}
+
 // CELULARES
 @media (min-width: 400px) {
   nav {
@@ -506,8 +574,28 @@ footer {
 
 // CELULAR GRANDE
 @media (min-width: 550px) {
-  .container-form {
+  .container-form,
+  .container-form-smaller {
     width: 510px;
+  }
+
+  // ME
+
+  .me-container {
+    padding: 20px 100px;
+    .me {
+      div {
+        .one-third {
+          text-align: right;
+        }
+        .two-thirds {
+          text-align: left;
+        }
+        input {
+          width: 70%;
+        }
+      }
+    }
   }
 
   // MAIN
@@ -623,6 +711,25 @@ footer {
       display: flex !important;
       flex: 1;
     }
+  }
+
+  // FORMS
+
+  .container-form {
+    width: 965px;
+    .inputs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .container-form-smaller {
+    width: 600px;
+  }
+
+  // ME
+
+  .me-container {
+    padding: 20px 200px;
   }
 
   // APP

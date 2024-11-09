@@ -31,10 +31,10 @@ nav.border {
   border-bottom: #222 1px solid;
 }
 
-.container-form {
+.container-form,
+.container-form-smaller {
   position: absolute;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 80%;
   bottom: 50%;
   left: 50%;
@@ -44,7 +44,19 @@ nav.border {
   padding: 20px;
   gap: 20px;
 }
-.container-form input {
+.container-form h2,
+.container-form-smaller h2 {
+  text-align: center;
+  margin: 0;
+}
+.container-form .inputs,
+.container-form-smaller .inputs {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+}
+.container-form .inputs input,
+.container-form-smaller .inputs input {
   width: 100%;
 }
 
@@ -107,26 +119,30 @@ header .textos-header h1 {
   font-size: 50px;
   color: #fff;
 }
-header .textos-header h2,
-header .textos-header h3 {
+header .textos-header .opciones-header {
+  border-radius: 10px;
+  overflow: hidden;
+}
+header .textos-header .opciones-header h2,
+header .textos-header .opciones-header h3 {
   cursor: pointer;
   font-weight: 300;
   color: #fff;
   background: rgba(255, 255, 255, 0.2666666667);
-  border-radius: 10px;
   padding: 5px;
   transition: color 0.3s ease, background-color 0.3s ease;
   width: 300px;
+  margin: 0;
 }
-header .textos-header h2:hover,
-header .textos-header h3:hover {
+header .textos-header .opciones-header h2:hover,
+header .textos-header .opciones-header h3:hover {
   color: #a9d1ff;
   background-color: rgba(255, 255, 255, 0.2);
 }
-header .textos-header h2 {
+header .textos-header .opciones-header h2 {
   font-size: 30px;
 }
-header .textos-header h3 {
+header .textos-header .opciones-header h3 {
   font-size: 26px;
 }
 
@@ -387,6 +403,56 @@ footer .titulo-final {
   color: #ccc;
 }
 
+.me-container {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.me-container h3 {
+  margin: 0;
+}
+.me-container .me {
+  border: #ccc solid 1px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+}
+.me-container .me form {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.me-container .me form .options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.me-container .me div {
+  margin-bottom: 5px;
+}
+.me-container .me div .one-third {
+  text-align: center;
+}
+.me-container .me div .one-third h5 {
+  font-size: 18px;
+  line-height: 36px;
+  margin: 0;
+}
+.me-container .me div .two-thirds {
+  text-align: center;
+}
+.me-container .me div input {
+  width: 85%;
+}
+.me-container .button-volver {
+  width: 200px;
+}
+
 @media (min-width: 400px) {
   nav {
     background: none;
@@ -459,8 +525,21 @@ footer .titulo-final {
   }
 }
 @media (min-width: 550px) {
-  .container-form {
+  .container-form,
+  .container-form-smaller {
     width: 510px;
+  }
+  .me-container {
+    padding: 20px 100px;
+  }
+  .me-container .me div .one-third {
+    text-align: right;
+  }
+  .me-container .me div .two-thirds {
+    text-align: left;
+  }
+  .me-container .me div input {
+    width: 70%;
   }
   .sobre-nosotros {
     display: flex;
@@ -544,6 +623,18 @@ footer .titulo-final {
   nav .auth {
     display: flex !important;
     flex: 1;
+  }
+  .container-form {
+    width: 965px;
+  }
+  .container-form .inputs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .container-form-smaller {
+    width: 600px;
+  }
+  .me-container {
+    padding: 20px 200px;
   }
   .app .options {
     grid-template-columns: repeat(2, 1fr);

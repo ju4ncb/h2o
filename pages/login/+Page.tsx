@@ -42,6 +42,7 @@ function Page() {
         title="Iniciar sesión"
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
+        oneColumn={true}
       >
         <FormItem error={errors.username} message={errors.username?.message}>
           <input

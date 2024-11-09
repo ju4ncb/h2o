@@ -1,6 +1,7 @@
 import express from "express";
 import dbConfig from "./dbConfig.js";
 import mysql from "mysql2/promise";
+import { JugadorTipo } from "./clases/Jugador.js";
 
 // db connection
 const pool = mysql.createPool(dbConfig.dev);
@@ -28,6 +29,28 @@ export const insertQuery = async (
     connection.release(); // Release the connection
   } catch (error) {
     console.log(error);
+    return null;
+  }
+};
+
+export const updateJugador = async (jugador: JugadorTipo) => {
+  try {
+    const connection = await pool.getConnection();
+    const query = `
+      UPDATE Usuarios SET username = "${jugador.username}",
+      passwd = "${jugador.passwd}",
+      nm1 = "${jugador.nm1}",
+      nm2 = "${jugador.nm2}",
+      ap1 = "${jugador.ap1}",
+      ap2 = "${jugador.ap2}" WHERE id_ju = ${jugador.id_ju}
+    `;
+    const [rows] = await connection.execute(query);
+    console.log("New row updated:", rows);
+
+    connection.release(); // Release the connection
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 };
 

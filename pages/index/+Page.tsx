@@ -10,7 +10,7 @@ import Servicio from "../../components/Servicio";
 import Footer from "../../components/Footer";
 import { useData } from "../../renderer/useData";
 import type { Data } from "./+data";
-import { UsuarioTipo } from "../../server/clases/usuario";
+import { JugadorTipo } from "../../server/clases/Jugador";
 
 export { Page };
 
@@ -30,20 +30,29 @@ function Page() {
         {user ? (
           <>
             <h4 style={{ color: "white" }}>Hola! {user.username}</h4>
-            <a href={`/me`}>
-              <h3>Mi cuenta</h3>
-            </a>
-            <a href={`/logout`}>
-              <h3>Cerrar sesion</h3>
-            </a>
-            <a href="/play">
-              <h2>Jugar demo</h2>
-            </a>
+            <div className="opciones-header">
+              <a href={`/me`}>
+                <h3>Mi cuenta</h3>
+              </a>
+              <a href={`/logout`}>
+                <h3>Cerrar sesion</h3>
+              </a>
+              {user.tipoUsuario === 0 && (
+                <a href="/administrate">
+                  <h3>Administrar</h3>
+                </a>
+              )}
+              <a href="/play">
+                <h2>Jugar demo</h2>
+              </a>
+            </div>
           </>
         ) : (
-          <a href="/login">
-            <h3>Iniciar sesión</h3>
-          </a>
+          <div className="opciones-header">
+            <a href="/login">
+              <h3>Iniciar sesión</h3>
+            </a>
+          </div>
         )}
       </Header>
       <main>
@@ -64,7 +73,7 @@ const Header = ({
   user,
 }: {
   children?: React.ReactNode;
-  user: UsuarioTipo;
+  user: JugadorTipo;
 }) => {
   return (
     <header>

@@ -39,6 +39,30 @@ function Page() {
     <>
       <NavBar withBorder={true} />
       <Form title="Registro" handleSubmit={handleSubmit} onSubmit={onSubmit}>
+        <FormItem error={errors.username} message={errors.username?.message}>
+          <input
+            {...register("username", {
+              required: "Ingrese un nombre de usuario",
+              maxLength: { value: 30, message: "Nombre de usuario muy largo" },
+            })}
+            placeholder="Nombre de usuario"
+            type="text"
+          />
+        </FormItem>
+        <FormItem
+          error={errors.contrasena}
+          message={errors.contrasena?.message}
+        >
+          <input
+            {...register("contrasena", {
+              required: "Ingrese una contrasena",
+              minLength: { value: 4, message: "Contraseña muy corta." },
+              maxLength: { value: 30, message: "Contraseña muy larga." },
+            })}
+            placeholder="Contraseña"
+            type="password"
+          />
+        </FormItem>
         <FormItem error={errors.nombre1} message={errors.nombre1?.message}>
           <input
             {...register("nombre1", {
@@ -77,31 +101,8 @@ function Page() {
             type="text"
           />
         </FormItem>
-        <FormItem error={errors.username} message={errors.username?.message}>
-          <input
-            {...register("username", {
-              required: "Ingrese un nombre de usuario",
-              maxLength: { value: 30, message: "Nombre de usuario muy largo" },
-            })}
-            placeholder="Nombre de usuario"
-            type="text"
-          />
-        </FormItem>
-        <FormItem
-          error={errors.contrasena}
-          message={errors.contrasena?.message}
-        >
-          <input
-            {...register("contrasena", {
-              required: "Ingrese una contrasena",
-              minLength: { value: 4, message: "Contraseña muy corta." },
-              maxLength: { value: 30, message: "Contraseña muy larga." },
-            })}
-            placeholder="Contraseña"
-            type="password"
-          />
-        </FormItem>
-        <a href="/auth">
+
+        <a href="/login">
           <p style={{ marginBottom: 0 }}>
             ¿Ya tienes cuenta? Inicia sesión aquí
           </p>

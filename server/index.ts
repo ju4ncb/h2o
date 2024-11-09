@@ -19,8 +19,8 @@ import compression from "compression";
 import { renderPage } from "vike/server";
 import { root } from "./root.js";
 import bodyParser from "body-parser";
-import { insertQuery, selectQuery } from "./dbQuerys.js";
-import { UsuarioTipo } from "./clases/usuario.js";
+import { insertQuery, selectQuery, updateJugador } from "./dbQuerys.js";
+import { JugadorTipo } from "./clases/Jugador.js";
 import { SECRET } from "./secretVariables.js";
 import jwt from "jsonwebtoken";
 import { useState } from "react";
@@ -68,12 +68,25 @@ async function startServer() {
   app.post("/auth", async (req, res) => {
     const { usuario, contrasena } = req.body;
     const rows = (await selectQuery(
-      "usuarios",
+      "jugadores",
       ["all"],
       `username = "${usuario}" AND passwd = "${contrasena}"`
-    )) as UsuarioTipo[];
+    )) as JugadorTipo[];
     if (rows[0]) {
-      req.session.user = rows[0] as UsuarioTipo;
+      const rowsAdmin = (await selectQuery(
+        "admins",
+        ["all"],
+        `id_ju = ${rows[0].id_ju}`
+      )) as { id_ad: number; id_ju: number }[];
+      let usuarioSesion = rows[0] as JugadorTipo;
+      if (rowsAdmin[0]) {
+        usuarioSesion.tipoUsuario = 0;
+      } else {
+        usuarioSesion.tipoUsuario = 1;
+      }
+
+      req.session.user = usuarioSesion;
+
       res.status(200).json({
         message: "Usuario autentificado",
         user: req.session.user,
@@ -83,29 +96,26 @@ async function startServer() {
     }
   });
 
-  const userExists = async (usuario: string) => {
-    const userRows = (await selectQuery(
-      "usuarios",
-      ["all"],
-      `username = "${usuario}"`
-    )) as UsuarioTipo[];
-    if (userRows[0]) {
-      return true;
-    }
-    return false;
-  };
-
   app.post("/register-user", async (req, res) => {
     const { usuario, contrasena, ap1, ap2, nm1, nm2 } = req.body;
-    if (await userExists(usuario)) {
+    if (
+      (await insertQuery(
+        "jugadores",
+        ["username", "passwd", "nm1", "nm2", "ap1", "ap2"],
+        [usuario, contrasena, nm1, nm2, ap1, ap2]
+      )) === null
+    ) {
       return res.status(409).send("Usuario ya existe");
     }
-    await insertQuery(
-      "usuarios",
-      ["username", "passwd", "nm1", "nm2", "ap1", "ap2", "tipo_usuario"],
-      [usuario, contrasena, nm1, nm2, ap1, ap2, "1"]
-    );
     res.status(200).send("Usuario registrado!");
+  });
+
+  app.post("/modify-user", async (req, res) => {
+    const { jugador } = req.body;
+    if ((await updateJugador(jugador)) === null) {
+      return res.status(409).send("Usuario ya existe");
+    }
+    res.status(200).send("Usuario modificado!");
   });
 
   app.get("/logout", (req, res) => {

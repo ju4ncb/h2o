@@ -1,5 +1,5 @@
 import React from "react";
-import { UsuarioTipo } from "../server/clases/usuario";
+import { JugadorTipo } from "../server/clases/Jugador";
 
 interface OptionProps {
   children?: React.ReactNode;
@@ -9,7 +9,7 @@ interface OptionProps {
 
 interface NavBarProps {
   withBorder?: boolean;
-  user?: UsuarioTipo;
+  user?: JugadorTipo;
 }
 
 const NavBar = ({ withBorder, user }: NavBarProps) => {
@@ -26,10 +26,17 @@ const NavBar = ({ withBorder, user }: NavBarProps) => {
         <ul className="navbar-list align-left auth">
           {user ? (
             <>
-              <Option href="" buttonLike={true}>
+              <Option href="/me" buttonLike={true}>
                 {user.username}
               </Option>
-              <Option href="/logout">Cerrar sesion</Option>
+              {user.tipoUsuario === 0 && (
+                <Option href="/administrate" buttonLike={true}>
+                  Administrar
+                </Option>
+              )}
+              <Option href="/logout" buttonLike={true}>
+                Cerrar sesion
+              </Option>
             </>
           ) : (
             <>

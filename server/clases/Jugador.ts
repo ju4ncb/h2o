@@ -1,9 +1,10 @@
-export type UsuarioReducidoTipo = {
+export type JugadorReducidoTipo = {
   username: string;
-  contrasena: string;
+  passwd: string;
 };
 
-export type UsuarioTipo = UsuarioReducidoTipo & {
+export type JugadorTipo = JugadorReducidoTipo & {
+  id_ju: string;
   nm1: string;
   nm2: string;
   ap1: string;

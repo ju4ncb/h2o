@@ -11,18 +11,25 @@ interface Props {
     onValid: SubmitHandler<FieldValues>,
     onInvalid?: SubmitErrorHandler<FieldValues> | undefined
   ) => (e?: React.BaseSyntheticEvent) => Promise<void>;
+  oneColumn?: boolean;
   children?: React.ReactNode;
 }
 
-const Form = ({ title, handleSubmit, onSubmit, children }: Props) => {
+const Form = ({
+  title,
+  handleSubmit,
+  onSubmit,
+  children,
+  oneColumn,
+}: Props) => {
   return (
     <form
-      className="container-form"
+      className={oneColumn ? "container-form-smaller" : "container-form"}
       onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
     >
       <h2>{title}</h2>
-      {children}
+      <div className="inputs">{children}</div>
       <button type="submit">Aceptar</button>
     </form>
   );
