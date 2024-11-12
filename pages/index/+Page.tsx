@@ -11,6 +11,7 @@ import Footer from "../../components/Footer";
 import { useData } from "../../renderer/useData";
 import type { Data } from "./+data";
 import { JugadorTipo } from "../../server/clases/Jugador";
+import { ChevronRightCircle } from "lucide-react";
 
 export { Page };
 
@@ -127,8 +128,9 @@ const PropositoAlcance = () => {
           </p>
         </div>
       </div>
-      <a href="/about-us">
-        <h6 style={{ marginBottom: 0 }}>Más información acerca de nosotros</h6>
+      <a className="link-nosotros" href="/about-us">
+        <h5>Más información acerca de nosotros</h5>
+        <ChevronRightCircle />
       </a>
     </section>
   );

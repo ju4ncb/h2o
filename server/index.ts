@@ -19,11 +19,18 @@ import compression from "compression";
 import { renderPage } from "vike/server";
 import { root } from "./root.js";
 import bodyParser from "body-parser";
-import { insertQuery, selectQuery, updateJugador } from "./dbQuerys.js";
+import {
+  deleteQuery,
+  insertQuery,
+  selectQuery,
+  updateJugador,
+} from "./dbQuerys.js";
 import { JugadorTipo } from "./clases/Jugador.js";
 import { SECRET } from "./secretVariables.js";
 import jwt from "jsonwebtoken";
 import { useState } from "react";
+import { PreguntaTipoExtendido } from "./clases/Pregunta.js";
+import { OpcionTipo } from "./clases/Opcion.js";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -105,17 +112,82 @@ async function startServer() {
         [usuario, contrasena, nm1, nm2, ap1, ap2]
       )) === null
     ) {
-      return res.status(409).send("Usuario ya existe");
+      return res.status(409).send("Jugador ya existe");
     }
-    res.status(200).send("Usuario registrado!");
+    res.status(200).send("Jugador registrado!");
   });
 
   app.post("/modify-user", async (req, res) => {
     const { jugador } = req.body;
     if ((await updateJugador(jugador)) === null) {
-      return res.status(409).send("Usuario ya existe");
+      return res.status(409).send("Jugador ya existe");
     }
-    res.status(200).send("Usuario modificado!");
+    res.status(200).send("Jugador modificado!");
+  });
+
+  app.post("/create-question", async (req, res) => {
+    const {
+      pregunta,
+      opciones,
+    }: { pregunta: PreguntaTipoExtendido; opciones: OpcionTipo[] } = req.body;
+    const admin = (await selectQuery(
+      "admins",
+      ["id_ad"],
+      `id_ju = ${pregunta.id_ju}`
+    )) as { id_ad: number }[];
+    const filaPregunta = await insertQuery(
+      "preguntas",
+      ["id_ad", "codigo", "descripcion", "dificultad"],
+      [
+        admin[0].id_ad + "",
+        pregunta.codigo,
+        pregunta.descripcion,
+        pregunta.dificultad + "",
+      ]
+    );
+    if (filaPregunta === null) {
+      return res.status(500).send("Problema sql.");
+    }
+
+    const preguntaResultados = (await selectQuery(
+      "preguntas",
+      ["id_pr"],
+      `codigo = "${pregunta.codigo}"`
+    )) as { id_pr: number }[];
+
+    let opcionesFiltrado: OpcionTipo[];
+
+    opciones[2].descripcion === undefined
+      ? // Es verdadero falso
+        (opcionesFiltrado = opciones.slice(0, 2))
+      : // Es normal
+        (opcionesFiltrado = opciones);
+
+    opcionesFiltrado.map(async ({ descripcion, codigo, esCorrecta }) => {
+      if (
+        (await insertQuery(
+          "opciones",
+          ["id_pr", "codigo", "descripcion", "es_correcta"],
+          [
+            preguntaResultados[0].id_pr + "",
+            codigo,
+            descripcion,
+            esCorrecta ? "1" : "0",
+          ]
+        )) === null
+      ) {
+        return res.status(500).send("Problema sql.");
+      }
+    });
+    res.status(200).send("Pregunta creada exitosamente!");
+  });
+
+  app.post("/delete-question", async (req, res) => {
+    const { id_pr } = req.body;
+    if ((await deleteQuery("preguntas", `id_pr = ${id_pr}`)) === null) {
+      return res.status(500).send("Problema sql.");
+    }
+    return res.status(200).send("Fila(s) eliminada(s) con éxito!");
   });
 
   app.get("/logout", (req, res) => {

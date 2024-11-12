@@ -4,7 +4,7 @@ export type JugadorReducidoTipo = {
 };
 
 export type JugadorTipo = JugadorReducidoTipo & {
-  id_ju: string;
+  id_ju: number;
   nm1: string;
   nm2: string;
   ap1: string;

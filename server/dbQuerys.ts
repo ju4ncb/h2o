@@ -2,6 +2,7 @@ import express from "express";
 import dbConfig from "./dbConfig.js";
 import mysql from "mysql2/promise";
 import { JugadorTipo } from "./clases/Jugador.js";
+import { PreguntaTipo } from "./clases/Pregunta.js";
 
 // db connection
 const pool = mysql.createPool(dbConfig.dev);
@@ -11,12 +12,9 @@ export const insertQuery = async (
   columns: string[],
   values: string[]
 ) => {
-  let columnsQuery = columns[0];
-  let valuesQuery = "?";
-  for (let i = 1; i < columns.length; i++) {
-    columnsQuery += ", " + columns[i];
-    valuesQuery += ", ?";
-  }
+  let columnsQuery = columns.join(", ");
+  let valuesQuery = columns.map(() => "?").join(", ");
+
   try {
     const connection = await pool.getConnection();
     const query = `
@@ -27,6 +25,7 @@ export const insertQuery = async (
     const [rows] = await connection.execute(query, values);
     console.log("New row inserted:", rows);
     connection.release(); // Release the connection
+    return rows;
   } catch (error) {
     console.log(error);
     return null;
@@ -62,24 +61,16 @@ export const selectQuery = async (
   let queryResults = {} as mysql.QueryResult;
   try {
     const connection = await pool.getConnection();
-    let query: string;
-    if (condition.trim() === "") {
-      query = `
-          SELECT ${columns} FROM ${tableName}
-        `;
-    } else {
-      if (columns[0] === "all") {
-        query = `
-          SELECT * FROM ${tableName}
-          WHERE ${condition};
-        `;
-      } else {
-        query = `
-          SELECT ${columns} FROM ${tableName}
-          WHERE ${condition};
-        `;
-      }
-    }
+    let columnsQuery = columns.join(", ");
+    let query = `SELECT `;
+    columns[0] === "all"
+      ? (query += `* FROM ${tableName}`)
+      : (query += `${columnsQuery} FROM ${tableName}`);
+
+    condition.trim() === ""
+      ? (query += `;`)
+      : (query += ` WHERE ${condition};`);
+
     // Provide actual values for your columns
     const [rows] = await connection.execute(query);
     console.log("Rows retrieved:\n", rows);
@@ -111,5 +102,6 @@ export const deleteQuery = async (tableName: string, condition: string) => {
     connection.release(); // Release the connection
   } catch (error) {
     console.log(error);
+    return null;
   }
 };

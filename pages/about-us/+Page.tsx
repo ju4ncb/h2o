@@ -16,41 +16,12 @@ function Page() {
       <NuestroEquipo>
         <NavBar user={user} />
         <h1 className="titulo">Conoce al equipo</h1>
-        <div className="scrum-product">
-          <TeamCard
-            img={def}
-            name="Juan Caballero"
-            occupation="Scrum Master"
-            position="left"
-          />
-          <TeamCard
-            img={def}
-            name="Juan Perez"
-            occupation="Product Owner"
-            position="right"
-          />
-        </div>
-        <div className="front-end">
-          <TeamCard
-            img={def}
-            name="Francisco Sosa"
-            occupation="Frontend Dev"
-            position="center"
-          />
-        </div>
-        <div className="back-end">
-          <TeamCard
-            img={def}
-            name="Andrés Solano"
-            occupation="Backend Dev"
-            position="left"
-          />
-          <TeamCard
-            img={def}
-            name="Juan Montenegro"
-            occupation="Backend Dev"
-            position="right"
-          />
+        <div className="integrantes">
+          <TeamCard img={def} name="Juan Caballero" occupation="Scrum Master" />
+          <TeamCard img={def} name="Juan Perez" occupation="Product Owner" />
+          <TeamCard img={def} name="Francisco Sosa" occupation="Frontend Dev" />
+          <TeamCard img={def} name="Andrés Solano" occupation="Backend Dev" />
+          <TeamCard img={def} name="Juan Montenegro" occupation="Backend Dev" />
         </div>
       </NuestroEquipo>
       <main>

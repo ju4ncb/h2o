@@ -61,7 +61,7 @@ function Page() {
       <NavBar user={user} />
       <div className="me-container">
         <h3>Editar campos</h3>
-        <section className="me">
+        <section className="formulario">
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <div className="options">
               {estaEditando ? (
@@ -93,7 +93,9 @@ function Page() {
             </div>
             <div className="row">
               <div className="column one-third">
-                <h5>Nombre de usuario</h5>
+                <h5 style={estaEditando ? {} : { color: "#aaa" }}>
+                  Nombre de usuario
+                </h5>
               </div>
               <div className="column two-thirds">
                 <FormItem
@@ -117,7 +119,9 @@ function Page() {
             </div>
             <div className="row">
               <div className="column one-third">
-                <h5>Contraseña</h5>
+                <h5 style={estaEditando ? {} : { color: "#aaa" }}>
+                  Contraseña
+                </h5>
               </div>
               <div className="column two-thirds">
                 <FormItem
@@ -142,7 +146,7 @@ function Page() {
             </div>
             <div className="row">
               <div className="column one-third">
-                <h5>Nombres</h5>
+                <h5 style={estaEditando ? {} : { color: "#aaa" }}>Nombres</h5>
               </div>
               <div className="column two-thirds">
                 <FormItem

@@ -5,6 +5,31 @@ body {
   overflow-x: hidden;
 }
 
+input[type=email]:disabled,
+input[type=number]:disabled,
+input[type=search]:disabled,
+input[type=text]:disabled,
+input[type=tel]:disabled,
+input[type=url]:disabled,
+input[type=password]:disabled,
+textarea:disabled,
+select:disabled {
+  border: 1px solid #e9e9e9;
+  color: #aaaaaa;
+}
+
+input[type=email]:disabled::placeholder,
+input[type=number]:disabled::placeholder,
+input[type=search]:disabled::placeholder,
+input[type=text]:disabled::placeholder,
+input[type=tel]:disabled::placeholder,
+input[type=url]:disabled::placeholder,
+input[type=password]:disabled::placeholder,
+textarea:disabled::placeholder,
+select:disabled::placeholder {
+  color: #dbdbdb;
+}
+
 .wave {
   position: absolute;
   bottom: -1px;
@@ -58,6 +83,26 @@ nav.border {
 .container-form .inputs input,
 .container-form-smaller .inputs input {
   width: 100%;
+}
+
+.administrate-home {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: calc(100vh - 40px);
+  align-items: center;
+  justify-content: space-around;
+}
+.administrate-home button {
+  margin-left: 25%;
+  width: 100%;
+  height: 20%;
+  border-radius: 20px;
+  font-size: 20px;
+}
+.administrate-home button:nth-last-child(1) {
+  color: white;
+  background: #222;
 }
 
 .app {
@@ -156,6 +201,7 @@ header .textos-header .opciones-header h3 {
 }
 
 .align-left {
+  text-align: left !important;
   justify-content: end !important;
 }
 
@@ -190,45 +236,46 @@ main {
 .los-eso-brad .titulo {
   color: #222;
   font-size: 40px;
-  margin: 0;
+  margin-bottom: 20px;
+  margin-top: 0px;
 }
 .los-eso-brad h3,
 .los-eso-brad h5,
 .los-eso-brad p {
   margin: 0;
 }
-.los-eso-brad .scrum-product,
-.los-eso-brad .back-end,
-.los-eso-brad .front-end {
+.los-eso-brad .integrantes {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.los-eso-brad .scrum-product .team-card,
-.los-eso-brad .back-end .team-card,
-.los-eso-brad .front-end .team-card {
-  width: 350px;
+  width: 70%;
+  margin-left: 15%;
+  gap: 40px;
 }
 
 .team-card {
   display: flex;
+  flex: 1;
   align-items: center;
-  height: 210px;
 }
 .team-card img {
-  width: 210px;
-  height: 210px;
+  max-width: 30%;
+  height: auto;
+  clip-path: circle();
+  flex: 1;
+  width: 100%;
 }
 .team-card .text-section {
-  position: relative;
+  flex: 1;
   width: fit-content;
+  text-align: center;
   color: #222;
   padding: 5px;
+  border-bottom: #222 2px solid;
+  border-radius: 4px;
 }
 .team-card .text-section h3 {
   font-size: 20px;
+  font-weight: bold;
 }
 .team-card .text-section h5 {
   font-size: 17px;
@@ -280,13 +327,38 @@ main {
   width: 30px;
   height: 30px;
   padding: 3px;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5019607843);
   margin-right: 5px;
 }
 .sobre-nosotros .container-sobre-nosotros .contenido-textos p {
   padding: 0px 0px 30px 15px;
   font-weight: 300;
   text-align: justify;
+}
+.sobre-nosotros .link-nosotros {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+  padding: 0 10px;
+  color: #5088db;
+  border: #a9d1ff solid 2px;
+  border-radius: 10px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  gap: 10px;
+  text-align: center;
+}
+.sobre-nosotros .link-nosotros h5 {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+.sobre-nosotros .link-nosotros svg {
+  display: none;
+}
+.sobre-nosotros .link-nosotros:hover {
+  border-color: rgb(118, 181.7209302326, 255);
+  color: rgb(42.3127962085, 108.1327014218, 205.6872037915);
 }
 
 .clientes {
@@ -403,7 +475,9 @@ footer .titulo-final {
   color: #ccc;
 }
 
-.me-container {
+.me-container,
+.preguntas-container,
+.crear-preguntas-container {
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
@@ -411,49 +485,81 @@ footer .titulo-final {
   justify-content: center;
   gap: 20px;
 }
-.me-container h3 {
+.me-container h3,
+.preguntas-container h3,
+.crear-preguntas-container h3 {
   margin: 0;
 }
-.me-container .me {
+.me-container .formulario,
+.preguntas-container .formulario,
+.crear-preguntas-container .formulario {
   border: #ccc solid 1px;
   border-radius: 20px;
   padding: 20px;
   width: 100%;
 }
-.me-container .me form {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.me-container .me form .options {
+.me-container .formulario form .options,
+.preguntas-container .formulario form .options,
+.crear-preguntas-container .formulario form .options {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
-.me-container .me div {
+.me-container .formulario div,
+.preguntas-container .formulario div,
+.crear-preguntas-container .formulario div {
   margin-bottom: 5px;
 }
-.me-container .me div .one-third {
+.me-container .formulario div .one-third,
+.preguntas-container .formulario div .one-third,
+.crear-preguntas-container .formulario div .one-third {
   text-align: center;
 }
-.me-container .me div .one-third h5 {
+.me-container .formulario div .one-third h5,
+.preguntas-container .formulario div .one-third h5,
+.crear-preguntas-container .formulario div .one-third h5 {
   font-size: 18px;
   line-height: 36px;
   margin: 0;
 }
-.me-container .me div .two-thirds {
+.me-container .formulario div .two-thirds,
+.preguntas-container .formulario div .two-thirds,
+.crear-preguntas-container .formulario div .two-thirds {
   text-align: center;
 }
-.me-container .me div input {
+.me-container .formulario div input,
+.me-container .formulario div textarea,
+.preguntas-container .formulario div input,
+.preguntas-container .formulario div textarea,
+.crear-preguntas-container .formulario div input,
+.crear-preguntas-container .formulario div textarea {
   width: 85%;
 }
+
+.preguntas-container .preguntas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preguntas-container .preguntas .pregunta {
+  display: flex;
+  gap: 10px;
+}
+.preguntas-container .preguntas .pregunta svg {
+  cursor: pointer;
+}
+
 .me-container .button-volver {
   width: 200px;
 }
 
 @media (min-width: 400px) {
+  .administrate-home {
+    height: calc(100vh - 40px);
+  }
   nav {
     background: none;
     display: block;
@@ -529,16 +635,27 @@ footer .titulo-final {
   .container-form-smaller {
     width: 510px;
   }
-  .me-container {
+  .me-container,
+  .preguntas-container,
+  .crear-preguntas-container {
     padding: 20px 100px;
   }
-  .me-container .me div .one-third {
+  .me-container .formulario div .one-third,
+  .preguntas-container .formulario div .one-third,
+  .crear-preguntas-container .formulario div .one-third {
     text-align: right;
   }
-  .me-container .me div .two-thirds {
+  .me-container .formulario div .two-thirds,
+  .preguntas-container .formulario div .two-thirds,
+  .crear-preguntas-container .formulario div .two-thirds {
     text-align: left;
   }
-  .me-container .me div input {
+  .me-container .formulario div input,
+  .me-container .formulario div textarea,
+  .preguntas-container .formulario div input,
+  .preguntas-container .formulario div textarea,
+  .crear-preguntas-container .formulario div input,
+  .crear-preguntas-container .formulario div textarea {
     width: 70%;
   }
   .sobre-nosotros {
@@ -555,26 +672,24 @@ footer .titulo-final {
   .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div h3 {
     font-size: 15px;
   }
+  .sobre-nosotros .link-nosotros svg {
+    display: block;
+  }
+  .sobre-nosotros .link-nosotros h5 {
+    font-size: 22px;
+  }
+  .los-eso-brad .integrantes {
+    width: 80%;
+    margin-left: 10%;
+  }
   .los-eso-brad .titulo {
     font-size: 50px;
   }
-  .los-eso-brad .scrum-product .team-card,
-  .los-eso-brad .front-end .team-card,
-  .los-eso-brad .back-end .team-card {
-    width: 400px;
-  }
-  .team-card {
-    height: 220px;
-  }
-  .team-card img {
-    width: 220px;
-    height: 220px;
-  }
   .team-card .text-section h3 {
-    font-size: 20px;
+    font-size: 32px;
   }
   .team-card .text-section h5 {
-    font-size: 17px;
+    font-size: 26px;
   }
   .clientes .cards {
     flex-direction: row;
@@ -633,8 +748,19 @@ footer .titulo-final {
   .container-form-smaller {
     width: 600px;
   }
-  .me-container {
+  .me-container,
+  .preguntas-container,
+  .crear-preguntas-container {
     padding: 20px 200px;
+  }
+  .administrate-home {
+    flex-direction: row;
+    width: 100%;
+  }
+  .administrate-home button {
+    margin-left: 0;
+    width: 25%;
+    height: 30%;
   }
   .app .options {
     grid-template-columns: repeat(2, 1fr);
@@ -665,78 +791,32 @@ footer .titulo-final {
   .sobre-nosotros .container-sobre-nosotros .contenido-textos .objetivos div h3 {
     font-size: 18px;
   }
-  .los-eso-brad .scrum-product,
-  .los-eso-brad .back-end {
-    display: flex;
+  .sobre-nosotros .link-nosotros h5 {
+    font-size: 26px;
+  }
+  .los-eso-brad {
+    margin-bottom: 0 !important;
+  }
+  .los-eso-brad .integrantes {
     flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  .los-eso-brad .scrum-product .team-card,
-  .los-eso-brad .back-end .team-card {
-    width: 50%;
-  }
-  .los-eso-brad .front-end {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .los-eso-brad .front-end .team-card {
-    width: 300px;
-  }
-  .los-eso-brad .back-end {
-    margin-bottom: 100px;
+    width: 90%;
+    margin-left: 5%;
   }
   .team-card {
-    display: block;
-    height: 300px;
+    flex-direction: column;
   }
   .team-card img {
-    width: 400px;
-    height: 400px;
+    max-width: 100%;
   }
   .team-card .text-section {
-    position: relative;
-    height: 80px;
-    width: fit-content;
-    top: -258px;
-    border: #004464 solid 1px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.6666666667);
-    color: #004464;
+    width: 100%;
+    border: none;
   }
   .team-card .text-section h3 {
-    font-size: 32px;
+    font-size: 22px;
   }
   .team-card .text-section h5 {
-    font-size: 28px;
-  }
-  .left img {
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-  }
-  .left div {
-    left: 260px;
-  }
-  .right img {
-    position: absolute;
-    right: 0;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-  }
-  .right div {
-    top: 149px !important;
-    left: 100%;
-    transform: translateX(-440px);
-  }
-  .center img {
-    transform: translateX(-50px);
-    border-radius: 50px;
-  }
-  .center div {
-    position: absolute;
-    right: 100%;
-    transform: translateX(540px);
+    font-size: 18px;
   }
   .container {
     margin-bottom: 100px;

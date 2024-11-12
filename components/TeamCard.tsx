@@ -1,13 +1,12 @@
 interface Props {
   img: string;
-  position: string;
   name: string;
   occupation: string;
 }
 
-const TeamCard = ({ img, position, name, occupation }: Props) => {
+const TeamCard = ({ img, name, occupation }: Props) => {
   return (
-    <div className={"team-card " + position}>
+    <div className={"team-card"}>
       <img src={img} />
       <div className="text-section">
         <h3>{name}</h3>
