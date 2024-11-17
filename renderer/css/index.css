@@ -30,10 +30,29 @@ select:disabled::placeholder {
   color: #dbdbdb;
 }
 
+@keyframes blink {
+  0% {
+    color: #222; /* Initial color */
+  }
+  50% {
+    color: transparent; /* Make text disappear */
+  }
+  100% {
+    color: #222; /* Back to the original color */
+  }
+}
 .wave {
   position: absolute;
   bottom: -1px;
   width: 100%;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+.countdown {
+  color: #222;
 }
 
 .parche1 {

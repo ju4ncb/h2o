@@ -40,10 +40,30 @@ select:disabled::placeholder {
   color: #dbdbdb;
 }
 
+@keyframes blink {
+  0% {
+    color: $color1; /* Initial color */
+  }
+  50% {
+    color: transparent; /* Make text disappear */
+  }
+  100% {
+    color: $color1; /* Back to the original color */
+  }
+}
+
 .wave {
   position: absolute;
   bottom: -1px;
   width: 100%;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+.countdown {
+  color: $color1;
 }
 
 .parche1 {
@@ -164,6 +184,7 @@ nav.border {
     .wrong {
       background: #eb9e9e;
     }
+    $co: #ff1616;
   }
   .seccion-siguiente {
     width: 90%;

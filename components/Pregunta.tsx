@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { PreguntaTipoExtendidoOpciones } from "../server/clases/Pregunta";
+import CountdownBar from "./CountdownBar";
 
 interface Props {
   numeroPregunta: number;
@@ -75,6 +76,12 @@ const Pregunta = ({ numeroPregunta, pregunta, puntos, onSiguiente }: Props) => {
             Intentar de nuevo
           </button>
         )}
+        <CountdownBar
+          tiempo={30}
+          timeOutFunction={() => {
+            setNoRespondido(false);
+          }}
+        />
       </div>
       {!noRespondido && (
         <>
