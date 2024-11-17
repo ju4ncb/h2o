@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar";
 import Pregunta from "../../components/Pregunta";
 import { useData } from "../../renderer/useData";
 import type { Data } from "./+data";
+import { Heart } from "lucide-react";
 
 export { Page };
 
@@ -33,6 +34,13 @@ function Page() {
       {activeQuestion === preguntas.length && (
         <div className="app">
           <h5>Has ganado!</h5>
+          {user.username === "yeii" && (
+            <>
+              <p>Felicidades jesiiiii te quiero muchísimo muamuamua</p>
+              <Heart />
+              <p>Te ganastes unos bechitos cuando vuelva a visitarte</p>
+            </>
+          )}
           <p style={{ margin: 10 }}>
             Gracias por jugar nuestra demo, puntos: {puntos}/{puntos}
           </p>

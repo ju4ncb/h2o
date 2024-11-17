@@ -36,7 +36,7 @@ export const updateJugador = async (jugador: JugadorTipo) => {
   try {
     const connection = await pool.getConnection();
     const query = `
-      UPDATE Usuarios SET username = "${jugador.username}",
+      UPDATE Jugadores SET username = "${jugador.username}",
       passwd = "${jugador.passwd}",
       nm1 = "${jugador.nm1}",
       nm2 = "${jugador.nm2}",

@@ -31,7 +31,7 @@ function Page() {
     if (response.status === 409) {
       alert(responseMessage);
     } else {
-      window.location.href = "/";
+      window.location.href = "/login";
     }
   };
 
