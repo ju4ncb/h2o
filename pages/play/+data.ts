@@ -43,6 +43,6 @@ const data = async (pageContext: PageContextServer) => {
     // The page's <title>
     title: `Demo`,
     user: pageContext.user,
-    preguntas: preguntasOpciones,
+    preguntas: preguntasOpciones.sort((a, b) => a.dificultad - b.dificultad),
   };
 };
