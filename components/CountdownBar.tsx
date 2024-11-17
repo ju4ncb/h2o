@@ -3,10 +3,15 @@ import React, { useState, useEffect } from "react";
 
 interface Props {
   tiempo: number;
+  isPaused: boolean;
   timeOutFunction(): void;
 }
 
-const CountdownBar: React.FC<Props> = ({ tiempo, timeOutFunction }: Props) => {
+const CountdownBar: React.FC<Props> = ({
+  tiempo,
+  isPaused,
+  timeOutFunction,
+}: Props) => {
   const [timeLeft, setTimeLeft] = useState(tiempo); // Time in seconds
   const [width, setWidth] = useState(100); // Progress bar width percentage
   const [backgroundColor, setBackgroundColor] = useState("#16ff3d");
@@ -22,7 +27,7 @@ const CountdownBar: React.FC<Props> = ({ tiempo, timeOutFunction }: Props) => {
     } else if (timeLeft <= tiempo / 4) {
       setBackgroundColor("#ff1616");
     }
-    if (timeLeft > 0) {
+    if (!isPaused && timeLeft > 0) {
       const interval = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
         setWidth((prev) => (timeLeft - 2) * (100 / tiempo)); // Adjust bar width
@@ -31,7 +36,7 @@ const CountdownBar: React.FC<Props> = ({ tiempo, timeOutFunction }: Props) => {
     } else {
       handleTimeOut(); // Execute the function when time runs out
     }
-  }, [timeLeft]);
+  }, [isPaused, timeLeft]);
 
   return (
     <div

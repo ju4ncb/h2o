@@ -77,6 +77,7 @@ const Pregunta = ({ numeroPregunta, pregunta, puntos, onSiguiente }: Props) => {
           </button>
         )}
         <CountdownBar
+          isPaused={!noRespondido}
           tiempo={30}
           timeOutFunction={() => {
             setNoRespondido(false);
