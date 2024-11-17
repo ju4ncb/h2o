@@ -1,22 +1,16 @@
-import React, { useState } from "react";
-import { OpcionTipo } from "../server/clases/Opcion";
+import React, { useRef, useState } from "react";
+import { PreguntaTipoExtendidoOpciones } from "../server/clases/Pregunta";
 
 interface Props {
   numeroPregunta: number;
-  pregunta: string;
-  opciones: OpcionTipo[];
-  punto: number;
+  pregunta: PreguntaTipoExtendidoOpciones;
+  puntos: number;
   onSiguiente(): void;
 }
 
-const Pregunta = ({
-  numeroPregunta,
-  pregunta,
-  opciones,
-  punto,
-  onSiguiente,
-}: Props) => {
+const Pregunta = ({ numeroPregunta, pregunta, puntos, onSiguiente }: Props) => {
   const [respuestaEscogida, setRespuestaEscogida] = useState(-1);
+  const [noRespondido, setNoRespondido] = useState(true);
 
   const clickSiguiente = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -24,6 +18,10 @@ const Pregunta = ({
     e.preventDefault();
     if (respuestaEscogida === -1) {
       alert("Escoge una respuesta");
+      return;
+    }
+    if (pregunta.opciones[respuestaEscogida].es_correcta === 0) {
+      setNoRespondido(false);
       return;
     }
     onSiguiente();
@@ -40,30 +38,50 @@ const Pregunta = ({
   return (
     <div className="app">
       <h2>Pregunta {numeroPregunta}</h2>
-      <h5 id="pregunta">{pregunta}</h5>
-      {opciones.map(({ descripcion, esCorrecta }, index) => {
-        let classes = "option";
-        if (index === respuestaEscogida) {
-          classes += " active";
-          esCorrecta ? (punto = 1) : (punto = 0);
-        }
-        return (
-          <button
-            className={classes}
-            onClick={(e) => {
-              clickOption(e, index);
-            }}
-          >
-            {descripcion}
-          </button>
-        );
-      })}
+      <h5 id="pregunta">{pregunta.descripcion}</h5>
+      <div className="options">
+        {pregunta.opciones.map(({ descripcion, es_correcta }, index) => {
+          let classes = "option";
+          if (index === respuestaEscogida && noRespondido) {
+            classes += " active";
+          } else {
+            if (es_correcta && !noRespondido) classes += " correct";
+            if (respuestaEscogida === index) classes += " wrong";
+          }
+          return (
+            <button
+              className={classes}
+              onClick={(e) => {
+                clickOption(e, index);
+              }}
+              disabled={!noRespondido}
+            >
+              {descripcion}
+            </button>
+          );
+        })}
+      </div>
 
       <div className="seccion-siguiente">
-        <button className="siguiente" onClick={clickSiguiente}>
-          siguiente
-        </button>
+        {noRespondido ? (
+          <button className="siguiente" onClick={clickSiguiente}>
+            Siguiente
+          </button>
+        ) : (
+          <button
+            className="siguiente"
+            onClick={() => (window.location.href = "play")}
+          >
+            Intentar de nuevo
+          </button>
+        )}
       </div>
+      {!noRespondido && (
+        <>
+          <h5>Has perdido!</h5>
+          <p>Puntos: {puntos}</p>
+        </>
+      )}
     </div>
   );
 };

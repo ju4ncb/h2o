@@ -116,18 +116,42 @@ nav.border {
 }
 .app h5 {
   text-align: center;
+  margin: 0;
+  margin-top: 10px;
   width: 100%;
+}
+.app p {
+  margin: 0;
 }
 .app .options {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
+  place-items: center;
+  align-items: stretch;
   padding: 20px;
 }
-.app .options button {
-  margin-left: 5%;
-  width: 90%;
+.app .options .option {
+  height: auto;
+  max-width: 90%;
+  min-width: 90%;
+  padding: 10px 20px;
+  font-size: 16px;
+  line-height: normal;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: visible;
+}
+.app .options .active {
+  color: #a9d1ff;
+  background: #222;
+}
+.app .options .correct {
+  background: #7aca8e;
+}
+.app .options .wrong {
+  background: #eb9e9e;
 }
 .app .seccion-siguiente {
   width: 90%;
@@ -559,6 +583,9 @@ footer .titulo-final {
 @media (min-width: 400px) {
   .administrate-home {
     height: calc(100vh - 40px);
+  }
+  .app {
+    height: calc(100% - 40px);
   }
   nav {
     background: none;

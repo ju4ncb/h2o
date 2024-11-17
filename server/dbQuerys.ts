@@ -56,7 +56,9 @@ export const updateJugador = async (jugador: JugadorTipo) => {
 export const selectQuery = async (
   tableName: string,
   columns: string[],
-  condition: string
+  condition: string,
+  isRandom?: boolean,
+  randomLimit?: number
 ) => {
   let queryResults = {} as mysql.QueryResult;
   try {
@@ -67,9 +69,13 @@ export const selectQuery = async (
       ? (query += `* FROM ${tableName}`)
       : (query += `${columnsQuery} FROM ${tableName}`);
 
-    condition.trim() === ""
-      ? (query += `;`)
-      : (query += ` WHERE ${condition};`);
+    if (isRandom) {
+      query += ` ORDER BY RAND() LIMIT ${randomLimit};`;
+    } else {
+      condition.trim() === ""
+        ? (query += `;`)
+        : (query += ` WHERE ${condition};`);
+    }
 
     // Provide actual values for your columns
     const [rows] = await connection.execute(query);

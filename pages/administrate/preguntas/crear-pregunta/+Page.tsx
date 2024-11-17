@@ -38,33 +38,33 @@ function Page() {
       opciones[0] = {
         codigo: `P${numeroPreguntas}O${1}`,
         descripcion: "Falso",
-        esCorrecta: "Falso" === data.verdaderoFalso,
+        es_correcta: "Falso" === data.verdaderoFalso ? 1 : 0,
       } as OpcionTipo;
       opciones[1] = {
         codigo: `P${numeroPreguntas}O${2}`,
         descripcion: "Verdadero",
-        esCorrecta: "Falso" !== data.verdaderoFalso,
+        es_correcta: "Falso" !== data.verdaderoFalso ? 1 : 0,
       } as OpcionTipo;
     } else {
       opciones[0] = {
         codigo: `P${numeroPreguntas}O${1}`,
         descripcion: data.opcion1,
-        esCorrecta: true,
+        es_correcta: 1,
       } as OpcionTipo;
       opciones[1] = {
         codigo: `P${numeroPreguntas}O${2}`,
         descripcion: data.opcion2,
-        esCorrecta: false,
+        es_correcta: 0,
       } as OpcionTipo;
       opciones[2] = {
         codigo: `P${numeroPreguntas}O${3}`,
         descripcion: data.opcion3,
-        esCorrecta: false,
+        es_correcta: 0,
       } as OpcionTipo;
       opciones[3] = {
         codigo: `P${numeroPreguntas}O${4}`,
         descripcion: data.opcion4,
-        esCorrecta: false,
+        es_correcta: 0,
       } as OpcionTipo;
     }
     const response = await fetch("/create-question", {

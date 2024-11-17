@@ -128,17 +128,41 @@ nav.border {
   height: 100%;
   h5 {
     text-align: center;
+    margin: 0;
+    margin-top: 10px;
     width: 100%;
+  }
+  p {
+    margin: 0;
   }
   .options {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto;
+    place-items: center;
+    align-items: stretch;
     padding: 20px;
-    button {
-      margin-left: 5%;
-      width: 90%;
+    .option {
+      height: auto;
+      max-width: 90%;
+      min-width: 90%;
+      padding: 10px 20px;
+      font-size: 16px;
+      line-height: normal;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow: visible;
+    }
+    .active {
+      color: $color3;
+      background: $color1;
+    }
+    .correct {
+      background: #7aca8e;
+    }
+    .wrong {
+      background: #eb9e9e;
     }
   }
   .seccion-siguiente {
@@ -586,6 +610,11 @@ footer {
 
   .administrate-home {
     height: calc(100vh - 40px);
+  }
+
+  // App
+  .app {
+    height: calc(100% - 40px);
   }
 
   nav {

@@ -179,7 +179,8 @@ const Instrucciones = () => {
             desarrollo sostenible 6.
           </Servicio>
           <Servicio title="¿Cómo ganar?" image={ilustracion3}>
-            Se gana con cumplir con al menos unos 6 puntos.
+            Actualmente en el demo, se gana con responder 8 preguntas correctas
+            consecutivamente
           </Servicio>
         </div>
       </div>

@@ -163,7 +163,7 @@ async function startServer() {
       : // Es normal
         (opcionesFiltrado = opciones);
 
-    opcionesFiltrado.map(async ({ descripcion, codigo, esCorrecta }) => {
+    opcionesFiltrado.map(async ({ descripcion, codigo, es_correcta }) => {
       if (
         (await insertQuery(
           "opciones",
@@ -172,7 +172,7 @@ async function startServer() {
             preguntaResultados[0].id_pr + "",
             codigo,
             descripcion,
-            esCorrecta ? "1" : "0",
+            es_correcta + "",
           ]
         )) === null
       ) {

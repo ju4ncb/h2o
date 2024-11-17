@@ -1,5 +1,5 @@
 export type OpcionTipo = {
   descripcion: string;
-  esCorrecta: boolean;
+  es_correcta: number;
   codigo: string;
 };
