@@ -167,7 +167,8 @@ function Page() {
                 >
                   <textarea
                     {...register("opcion1", {
-                      required: "Ingrese una opción válida",
+                      required:
+                        !esVerdaderoFalso && "Ingrese una opción válida",
                       maxLength: {
                         value: 400,
                         message: "Opción muy larga.",
@@ -183,7 +184,8 @@ function Page() {
                 >
                   <textarea
                     {...register("opcion2", {
-                      required: "Ingrese una opción válida",
+                      required:
+                        !esVerdaderoFalso && "Ingrese una opción válida",
                       maxLength: {
                         value: 400,
                         message: "Opción muy larga.",
@@ -199,7 +201,8 @@ function Page() {
                 >
                   <textarea
                     {...register("opcion3", {
-                      required: "Ingrese una opción válida",
+                      required:
+                        !esVerdaderoFalso && "Ingrese una opción válida",
                       maxLength: {
                         value: 400,
                         message: "Opción muy larga.",
@@ -215,7 +218,8 @@ function Page() {
                 >
                   <textarea
                     {...register("opcion4", {
-                      required: "Ingrese una opción válida",
+                      required:
+                        !esVerdaderoFalso && "Ingrese una opción válida",
                       maxLength: {
                         value: 400,
                         message: "Opción muy larga.",
