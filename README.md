@@ -40,7 +40,7 @@ declare module "express-session" {
 }
 ```
 
-### User en pageContext
+#### User en pageContext
 
 En el archivo /node_modules/vike/dist/esm/shared/types.d.ts, al inicio agregue el importe del siguiente archivo:
 
