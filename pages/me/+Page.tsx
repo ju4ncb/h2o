@@ -6,6 +6,7 @@ import type { Data } from "./+data";
 import { Heart, Edit, SaveIcon, Ban } from "lucide-react";
 import { FieldValues, useForm } from "react-hook-form";
 import { JugadorTipo } from "../../server/clases/Jugador";
+import swalCustomAlert from "../../components/SwalCustom";
 
 export { Page };
 
@@ -29,8 +30,9 @@ function Page() {
     setValue("username", user.username);
     setValue("contrasena", user.passwd);
   };
-
-  resetValues();
+  useEffect(() => {
+    resetValues();
+  }, []);
 
   const onSubmit = async (data: FieldValues) => {
     const jugador = {
@@ -51,9 +53,11 @@ function Page() {
     });
     const responseMessage = await response.text();
     if (response.status === 409) {
-      alert(responseMessage);
+      swalCustomAlert(responseMessage, true);
     } else {
-      setEstaEditando(false);
+      swalCustomAlert(responseMessage).then(() => {
+        setEstaEditando(false);
+      });
     }
   };
   return (

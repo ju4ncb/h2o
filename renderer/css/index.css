@@ -103,6 +103,19 @@ nav.border {
 .container-form-smaller .inputs input {
   width: 100%;
 }
+.container-form .inputs .input-container,
+.container-form-smaller .inputs .input-container {
+  height: 38px;
+  transition: height 0.3s ease;
+}
+.container-form .inputs .input-container p,
+.container-form-smaller .inputs .input-container p {
+  color: #ff7878;
+}
+.container-form .inputs .has-one-text,
+.container-form-smaller .inputs .has-one-text {
+  height: 62px;
+}
 
 .administrate-home {
   display: flex;
@@ -572,6 +585,22 @@ footer .titulo-final {
 .crear-preguntas-container .formulario div .two-thirds {
   text-align: center;
 }
+.me-container .formulario div .two-thirds .input-container,
+.preguntas-container .formulario div .two-thirds .input-container,
+.crear-preguntas-container .formulario div .two-thirds .input-container {
+  height: 38px;
+  transition: height 0.3s ease;
+}
+.me-container .formulario div .two-thirds .input-container p,
+.preguntas-container .formulario div .two-thirds .input-container p,
+.crear-preguntas-container .formulario div .two-thirds .input-container p {
+  color: #ff7878;
+}
+.me-container .formulario div .two-thirds .has-one-text,
+.preguntas-container .formulario div .two-thirds .has-one-text,
+.crear-preguntas-container .formulario div .two-thirds .has-one-text {
+  height: 62px;
+}
 .me-container .formulario div input,
 .me-container .formulario div textarea,
 .preguntas-container .formulario div input,
@@ -582,16 +611,26 @@ footer .titulo-final {
 }
 
 .preguntas-container .preguntas {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 .preguntas-container .preguntas .pregunta {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
+  margin: 5px;
+}
+.preguntas-container .preguntas .pregunta p {
+  width: calc(100% - 40px);
+  margin: 0;
 }
 .preguntas-container .preguntas .pregunta svg {
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 

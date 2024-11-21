@@ -3,6 +3,7 @@ import Form from "../../components/Form";
 import NavBar from "../../components/NavBar";
 import FormItem from "../../components/FormItem";
 import { PageContext } from "vike/types";
+import swalCustomAlert from "../../components/SwalCustom";
 
 export { Page };
 
@@ -27,7 +28,7 @@ function Page() {
 
     if (response.status === 401) {
       const responseMessage = await response.text();
-      alert(responseMessage);
+      swalCustomAlert(responseMessage, true);
     } else {
       const responseData = await response.json();
       console.log(responseData);

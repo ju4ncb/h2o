@@ -111,6 +111,16 @@ nav.border {
     input {
       width: 100%;
     }
+    .input-container {
+      height: 38px;
+      transition: height 0.3s ease;
+      p {
+        color: #ff7878;
+      }
+    }
+    .has-one-text {
+      height: 62px;
+    }
   }
 }
 
@@ -593,6 +603,16 @@ footer {
       }
       .two-thirds {
         text-align: center;
+        .input-container {
+          height: 38px;
+          transition: height 0.3s ease;
+          p {
+            color: #ff7878;
+          }
+        }
+        .has-one-text {
+          height: 62px;
+        }
       }
       input,
       textarea {
@@ -605,14 +625,24 @@ footer {
 
 .preguntas-container {
   .preguntas {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     .pregunta {
+      width: 100%;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       gap: 10px;
+      margin: 5px;
+      p {
+        width: calc(100% - 40px);
+        margin: 0;
+      }
       svg {
+        width: 30px;
+        height: 30px;
         cursor: pointer;
       }
     }

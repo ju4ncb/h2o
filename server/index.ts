@@ -122,6 +122,26 @@ async function startServer() {
     if ((await updateJugador(jugador)) === null) {
       return res.status(409).send("Jugador ya existe");
     }
+    const rows = (await selectQuery(
+      "jugadores",
+      ["all"],
+      `id_ju = ${req.session.user?.id_ju}`
+    )) as JugadorTipo[];
+    if (rows[0]) {
+      const rowsAdmin = (await selectQuery(
+        "admins",
+        ["all"],
+        `id_ju = ${rows[0].id_ju}`
+      )) as { id_ad: number; id_ju: number }[];
+      let usuarioSesion = rows[0] as JugadorTipo;
+      if (rowsAdmin[0]) {
+        usuarioSesion.tipoUsuario = 0;
+      } else {
+        usuarioSesion.tipoUsuario = 1;
+      }
+
+      req.session.user = usuarioSesion;
+    }
     res.status(200).send("Jugador modificado!");
   });
 

@@ -1,7 +1,10 @@
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
-import juanC from "../../renderer/img/juancaballero.jpeg";
-import def from "../../renderer/img/default-icon.jpeg";
+import juanC from "../../renderer/img/yo-ese.jpg";
+import juanM from "../../renderer/img/montenegro.jpg";
+import juanP from "../../renderer/img/otro-gei.jpg";
+import fran from "../../renderer/img/un-gei.jpg";
+import pipe from "../../renderer/img/pipe.jpg";
 import ilustracion5 from "../../renderer/img/ilustracion5.png";
 import TeamCard from "../../components/TeamCard";
 import type { Data } from "./+data";
@@ -17,11 +20,23 @@ function Page() {
         <NavBar user={user} />
         <h1 className="titulo">Conoce al equipo</h1>
         <div className="integrantes">
-          <TeamCard img={def} name="Juan Caballero" occupation="Scrum Master" />
-          <TeamCard img={def} name="Juan Perez" occupation="Product Owner" />
-          <TeamCard img={def} name="Francisco Sosa" occupation="Frontend Dev" />
-          <TeamCard img={def} name="Andrés Solano" occupation="Backend Dev" />
-          <TeamCard img={def} name="Juan Montenegro" occupation="Backend Dev" />
+          <TeamCard
+            img={juanC}
+            name="Juan Caballero"
+            occupation="Scrum Master"
+          />
+          <TeamCard img={juanP} name="Juan Perez" occupation="Product Owner" />
+          <TeamCard
+            img={fran}
+            name="Francisco Sosa"
+            occupation="Frontend Dev"
+          />
+          <TeamCard img={pipe} name="Andrés Solano" occupation="Backend Dev" />
+          <TeamCard
+            img={juanM}
+            name="Juan Montenegro"
+            occupation="Backend Dev"
+          />
         </div>
       </NuestroEquipo>
       <main>

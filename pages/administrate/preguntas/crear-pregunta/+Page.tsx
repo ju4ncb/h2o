@@ -10,6 +10,7 @@ import {
 } from "../../../../server/clases/Pregunta";
 import { SendHorizonal } from "lucide-react";
 import { OpcionTipo } from "../../../../server/clases/Opcion";
+import swalCustomAlert from "../../../../components/SwalCustom";
 
 export { Page };
 
@@ -77,7 +78,7 @@ function Page() {
     });
     const responseMessage = await response.text();
     if (response.status === 500) {
-      alert(responseMessage);
+      swalCustomAlert(responseMessage, true);
     } else {
       window.location.href = "/administrate/preguntas";
     }

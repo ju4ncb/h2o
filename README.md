@@ -5,6 +5,7 @@
 - sass
 - lucide-react
 - sweetalert2
+- mysql2
 
 # Created by
 

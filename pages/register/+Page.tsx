@@ -2,6 +2,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import Form from "../../components/Form";
 import NavBar from "../../components/NavBar";
 import FormItem from "../../components/FormItem";
+import swalCustomAlert from "../../components/SwalCustom";
 
 export { Page };
 
@@ -29,9 +30,11 @@ function Page() {
     });
     const responseMessage = await response.text();
     if (response.status === 409) {
-      alert(responseMessage);
+      swalCustomAlert(responseMessage, true);
     } else {
-      window.location.href = "/login";
+      swalCustomAlert(responseMessage).then(() => {
+        window.location.href = "/login";
+      });
     }
   };
 
