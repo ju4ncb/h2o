@@ -607,6 +607,17 @@ footer .titulo-final {
 .crear-preguntas-container .formulario div .two-thirds .has-one-text {
   height: 62px;
 }
+.me-container .formulario div .big .input-container,
+.preguntas-container .formulario div .big .input-container,
+.crear-preguntas-container .formulario div .big .input-container {
+  height: 63px;
+  margin-bottom: 10px;
+}
+.me-container .formulario div .big .has-one-text,
+.preguntas-container .formulario div .big .has-one-text,
+.crear-preguntas-container .formulario div .big .has-one-text {
+  height: 87px;
+}
 .me-container .formulario div input,
 .me-container .formulario div textarea,
 .preguntas-container .formulario div input,

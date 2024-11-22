@@ -94,7 +94,7 @@ function Page() {
               <div className="column one-third">
                 <h5>Pregunta</h5>
               </div>
-              <div className="column two-thirds">
+              <div className="column two-thirds big">
                 <FormItem
                   error={errors.pregunta}
                   message={errors.pregunta?.message}
@@ -116,7 +116,7 @@ function Page() {
               <div className="column one-third">
                 <h5>¿Es verdadero o falso?</h5>
               </div>
-              <div className="column two-thirds">
+              <div className="column two-thirds big">
                 <input
                   placeholder="Opción 1"
                   type="checkbox"
@@ -161,7 +161,7 @@ function Page() {
                   Opciones
                 </h5>
               </div>
-              <div className="column two-thirds">
+              <div className="column two-thirds big">
                 <FormItem
                   error={errors.opcion1}
                   message={errors.opcion1?.message}

@@ -1,6 +1,6 @@
 import NavBar from "../../components/NavBar";
-import juanC from "../../renderer/img/juancaballero.jpeg";
-import migue from "../../renderer/img/miguelbarragan.jpeg";
+import hitler from "../../renderer/img/hitler.jpeg";
+import rene from "../../renderer/img/ren-dscartes.webp";
 import ilustracion1 from "../../renderer/img/ilustracion1.svg";
 import ilustracion2 from "../../renderer/img/ilustracion2.svg";
 import ilustracion3 from "../../renderer/img/ilustracion3.svg";
@@ -141,12 +141,12 @@ const Clientes = () => {
     <section className="clientes container">
       <h2 className="titulo">Opiniones de nuestros clientes</h2>
       <div className="cards">
-        <Card image={migue} name="Miguel Barragan">
-          Opinion 1
+        <Card image={rene} name="René Descartes">
+          God
         </Card>
 
-        <Card image={juanC} name="Juan Caballero">
-          Opinion 2
+        <Card image={hitler} name="Adolf Hitler">
+          Boff
         </Card>
       </div>
     </section>

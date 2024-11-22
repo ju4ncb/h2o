@@ -12,7 +12,7 @@ export type JugadorTipo = JugadorReducidoTipo & {
   tipoUsuario: number;
 };
 
-export class Usuario {
+export class Jugador {
   username!: string;
   contrasena!: string;
   nm1!: string;
