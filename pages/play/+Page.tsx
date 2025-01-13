@@ -4,6 +4,7 @@ import Pregunta from "../../components/Pregunta";
 import { useData } from "../../renderer/useData";
 import type { Data } from "./+data";
 import { Heart } from "lucide-react";
+import { congrats } from "../secretVariables";
 
 export { Page };
 
@@ -34,15 +35,10 @@ function Page() {
       {activeQuestion === preguntas.length && (
         <div className="app">
           <h5>Has ganado!</h5>
-          {user.username === "yeii" && (
-            <>
-              <p>Felicidades jesiiiii te quiero muchísimo muamuamua</p>
-              <Heart />
-              <p>Te ganastes unos bechitos cuando vuelva a visitarte</p>
-            </>
-          )}
+          {user.username === "yeii" && congrats}
+
           <p style={{ margin: 10 }}>
-            Gracias por jugar nuestra demo, puntos: {puntos}/{puntos}
+            Gracias por jugar esta demo, puntos: {puntos}/{puntos}
           </p>
           <button onClick={() => (window.location.href = "play")}>
             Intentar de nuevo

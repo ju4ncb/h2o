@@ -139,7 +139,6 @@ async function startServer() {
       } else {
         usuarioSesion.tipoUsuario = 1;
       }
-
       req.session.user = usuarioSesion;
     }
     res.status(200).send("Jugador modificado!");
@@ -243,7 +242,7 @@ async function startServer() {
     res.send(httpResponse.body);
   });
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 5000;
   app.listen(port);
   console.log(`Server running at http://localhost:${port}`);
 }

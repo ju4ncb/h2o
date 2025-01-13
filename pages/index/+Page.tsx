@@ -1,5 +1,5 @@
 import NavBar from "../../components/NavBar";
-import hitler from "../../renderer/img/hitler.jpeg";
+import haru from "../../renderer/img/haru.jpg";
 import rene from "../../renderer/img/ren-dscartes.webp";
 import ilustracion1 from "../../renderer/img/ilustracion1.svg";
 import ilustracion2 from "../../renderer/img/ilustracion2.svg";
@@ -145,8 +145,8 @@ const Clientes = () => {
           God
         </Card>
 
-        <Card image={hitler} name="Adolf Hitler">
-          Boff
+        <Card image={haru} name="Haru Petra">
+          Waos
         </Card>
       </div>
     </section>

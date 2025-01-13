@@ -7,6 +7,7 @@ import { Heart, Edit, SaveIcon, Ban } from "lucide-react";
 import { FieldValues, useForm } from "react-hook-form";
 import { JugadorTipo } from "../../server/clases/Jugador";
 import swalCustomAlert from "../../components/SwalCustom";
+import { me } from "../secretVariables";
 
 export { Page };
 
@@ -227,8 +228,7 @@ function Page() {
             gap: 10,
           }}
         >
-          <h2 style={{ color: "red", margin: 0 }}>Te quiero muchooooo</h2>
-          <Heart color="red" fontSize={100} />
+          {me}
         </div>
       )}
     </>

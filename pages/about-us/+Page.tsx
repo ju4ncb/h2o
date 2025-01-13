@@ -4,6 +4,7 @@ import juanC from "../../renderer/img/yo-ese.jpg";
 import juanM from "../../renderer/img/montenegro.jpg";
 import juanP from "../../renderer/img/otro-gei.jpg";
 import fran from "../../renderer/img/un-gei.jpg";
+import danA from "../../renderer/img/daniel-anaya.jpg";
 import pipe from "../../renderer/img/pipe.jpg";
 import ilustracion5 from "../../renderer/img/ilustracion5.png";
 import TeamCard from "../../components/TeamCard";
@@ -23,19 +24,7 @@ function Page() {
           <TeamCard
             img={juanC}
             name="Juan Caballero"
-            occupation="Scrum Master"
-          />
-          <TeamCard img={juanP} name="Juan Perez" occupation="Product Owner" />
-          <TeamCard
-            img={fran}
-            name="Francisco Sosa"
-            occupation="Frontend Dev"
-          />
-          <TeamCard img={pipe} name="Andrés Solano" occupation="Backend Dev" />
-          <TeamCard
-            img={juanM}
-            name="Juan Montenegro"
-            occupation="Backend Dev"
+            occupation="Diseñador de la página"
           />
         </div>
       </NuestroEquipo>

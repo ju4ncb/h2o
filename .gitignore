@@ -1,5 +1,6 @@
 node_modules/
 dist/
+pages/secretVariables.tsx
 server/bd.sql
 server/dbConfig.ts
 server/secretVariables.ts
