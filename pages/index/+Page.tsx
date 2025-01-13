@@ -5,6 +5,7 @@ import ilustracion1 from "../../renderer/img/ilustracion1.svg";
 import ilustracion2 from "../../renderer/img/ilustracion2.svg";
 import ilustracion3 from "../../renderer/img/ilustracion3.svg";
 import ilustracion4 from "../../renderer/img/ilustracion4.svg";
+import logo from "../../renderer/img/logo.png";
 import Card from "../../components/Card";
 import Servicio from "../../components/Servicio";
 import Footer from "../../components/Footer";
@@ -27,7 +28,7 @@ function Page() {
   return (
     <>
       <Header user={user}>
-        <h1>H2O Esperanza</h1>
+        <img src={logo} alt="logo" />
         {user ? (
           <>
             <h4 style={{ color: "white" }}>Hola! {user.username}</h4>

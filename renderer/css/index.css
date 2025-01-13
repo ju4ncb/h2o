@@ -907,10 +907,12 @@ footer .titulo-final {
     margin-left: 5%;
   }
   .team-card {
+    max-height: 200px;
     flex-direction: column;
   }
   .team-card img {
-    max-width: 100%;
+    max-height: 80%;
+    width: auto;
   }
   .team-card .text-section {
     width: 100%;

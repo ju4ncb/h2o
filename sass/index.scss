@@ -1010,9 +1010,11 @@ footer {
   }
 
   .team-card {
+    max-height: 200px;
     flex-direction: column;
     img {
-      max-width: 100%;
+      max-height: 80%;
+      width: auto;
     }
     .text-section {
       width: 100%;
