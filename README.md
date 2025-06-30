@@ -7,14 +7,6 @@
 - sweetalert2
 - mysql2
 
-# Created by
-
-- Juan Caballero - Scrum Master
-- Juan Perez - Product Owner
-- Juan Montenegro - Developer
-- Andres Solano - Developer
-- Francisco Sosa - Developer
-
 # Instrucciones
 
 ### Instalar dependencias
